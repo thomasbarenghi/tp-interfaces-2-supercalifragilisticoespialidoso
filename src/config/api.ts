@@ -9,4 +9,7 @@ export const API = {
   ORDERS: `${BASE}/orders`,
   ORDER_BY_NUMBER: (orderNumber: string) => `${BASE}/orders?orderNumber=${orderNumber}`,
   LOGIN: `${BASE}/auth/login`,
+  FOLLOW: (userId: string, targetId: string) => `${BASE}/users/${userId}/follow/${targetId}`,
+  UNFOLLOW: (userId: string, targetId: string) => `${BASE}/users/${userId}/unfollow/${targetId}`,
+  FOLLOWERS: (userId: string) => `${BASE}/users/${userId}/followers`,
 } as const

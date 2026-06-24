@@ -2,6 +2,7 @@ import { Button } from '@heroui/react'
 import { useNavigate } from 'react-router'
 import type { User } from '../../types/user'
 import { useAuth } from '../../hooks/useAuth'
+import { useFollow } from '../../hooks/useFollow'
 import { ROUTES } from '../../config/routes'
 
 interface ProfileHeaderProps {
@@ -11,7 +12,16 @@ interface ProfileHeaderProps {
 const ProfileHeader = ({ user }: ProfileHeaderProps) => {
   const { user: authUser, isInitialized } = useAuth()
   const navigate = useNavigate()
-  const isOwnProfile = authUser?.id === user.id
+  const isOwnProfile = authUser?.id === user.id || authUser?._id === user._id
+  const authId = authUser?.id || authUser?._id
+  const isFollowing =
+    !!authId && (user.followers ?? []).some((f) => f._id === authId || f.id === authId)
+  const { follow, unfollow, isLoading } = useFollow(user._id || user.id, authId)
+
+  const handleFollowToggle = () => {
+    if (isFollowing) unfollow()
+    else follow()
+  }
 
   return (
     <div className="flex justify-center px-4">
@@ -28,6 +38,15 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
             <p>{user.bio}</p>
           </div>
 
+          <div className="flex gap-6 text-sm">
+            <span>
+              <strong>{user.followers?.length ?? 0}</strong> seguidores
+            </span>
+            <span>
+              <strong>{user.following?.length ?? 0}</strong> siguiendo
+            </span>
+          </div>
+
           {isInitialized && (
             <div className="flex flex-wrap gap-2">
               {isOwnProfile ? (
@@ -39,8 +58,13 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
                   Editar perfil
                 </Button>
               ) : (
-                <Button variant="primary" className="px-6 font-medium">
-                  Seguir
+                <Button
+                  variant={isFollowing ? 'outline' : 'primary'}
+                  className="px-6 font-medium"
+                  isDisabled={isLoading}
+                  onClick={handleFollowToggle}
+                >
+                  {isFollowing ? 'Dejar de seguir' : 'Seguir'}
                 </Button>
               )}
             </div>
