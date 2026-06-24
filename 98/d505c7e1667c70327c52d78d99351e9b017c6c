@@ -1,0 +1,54 @@
+src/components/PostCard/index.tsx
+  s_8b704ef887b774::t_894ff0e3e8965e 4,7-12,14,17,20-32,39-40,43-47
+  h_a5ee0ed7d5d05d 5
+src/components/PostGrid/index.tsx
+  h_a5ee0ed7d5d05d 2,4-5,17-20
+  s_8b704ef887b774::t_e56686d449ca42 3,11,14-15
+src/hooks/useUserPosts.ts
+  h_a5ee0ed7d5d05d 29
+src/pages/profile/index.tsx
+  s_8b704ef887b774::t_b556a8ca6e6882 2,4-6,22
+  h_a5ee0ed7d5d05d 8-11,16,21,23-27
+src/hooks/useUser.ts
+  h_a5ee0ed7d5d05d 7
+src/components/PostGrid/PostCardEmptyState.tsx
+  h_a5ee0ed7d5d05d 1-20
+src/types/user.ts
+  h_a5ee0ed7d5d05d 1
+src/components/ProfileHeader/index.tsx
+  s_7f6a6d1b736d4a::t_1a13c76694a608 24,26-27,29,31,33-34,36
+  s_7f6a6d1b736d4a::t_51585b94c07c96 1
+  h_a5ee0ed7d5d05d 2,9-10,14,16-23,25,30,32,37
+  s_8b704ef887b774::t_085ffbba449505 3-8,11-13,15,28,35,38-44
+src/components/PostGrid/PostCardSkeleton.tsx
+  h_a5ee0ed7d5d05d 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "98d505c7e1667c70327c52d78d99351e9b017c6c",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_7f6a6d1b736d4a": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1781789616070",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    },
+    "s_8b704ef887b774": {
+      "agent_id": {
+        "tool": "junie",
+        "id": "1781789616070",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
