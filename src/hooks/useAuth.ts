@@ -19,6 +19,7 @@ interface AuthUser {
 export const useAuth = () => {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [isInitialized, setIsInitialized] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export const useAuth = () => {
         localStorage.removeItem('auth_user')
       }
     }
+    setIsInitialized(true)
   }, [])
 
   const login = async (email: string, password: string) => {
@@ -76,6 +78,7 @@ export const useAuth = () => {
     login,
     logout,
     isLoading,
+    isInitialized,
     error,
     isAuthenticated: !!user,
   }

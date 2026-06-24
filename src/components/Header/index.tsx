@@ -1,15 +1,16 @@
-import { Avatar, Link } from '@heroui/react'
+import { Link } from '@heroui/react'
 import clsx from 'clsx'
-import { Bars, ShoppingCart } from '@gravity-ui/icons'
+import { Bars } from '@gravity-ui/icons'
 import { useState } from 'react'
 import Logo from '../Logo'
 import MobileMenu from '../MobileMenu'
 import { ROUTES } from '../../config/routes'
+import UserMenu from '../UserMenu'
 
 const NAV_ITEMS = [
-  { text: 'Feed', icon: false, underline: false, href: "" },
-  { text: 'Sobre nosotros', icon: false, underline: false, href: "" },
-  { text: 'Crear publicacion', icon: true, underline: true, href: "" },
+  { text: 'Feed', icon: false, underline: false, href: '' },
+  { text: 'Sobre nosotros', icon: false, underline: false, href: '' },
+  { text: 'Crear publicacion', icon: true, underline: true, href: '' },
 ]
 
 const Header = () => {
@@ -43,24 +44,14 @@ const Header = () => {
             </ul>
           </div>
 
-          {/* Desktop: search + cart */}
+          {/* Desktop: user menu */}
           <div className="hidden xl:flex items-center gap-6">
-              <Avatar color="accent" variant="soft">
-                <Avatar.Fallback>
-                  <ShoppingCart />
-                </Avatar.Fallback>
-              </Avatar>
+            <UserMenu />
           </div>
 
-          {/* Mobile: cart + hamburger */}
+          {/* Mobile: user menu + hamburger */}
           <div className="flex xl:hidden items-center gap-4">
-            <Link href={ROUTES.CART} className="no-underline">
-              <Avatar color="accent" variant="soft">
-                <Avatar.Fallback>
-                  <ShoppingCart />
-                </Avatar.Fallback>
-              </Avatar>
-            </Link>
+            <UserMenu />
             <button onClick={() => setMenuOpen((o) => !o)} aria-label="Abrir menú" className="p-1">
               <Bars width={20} height={20} />
             </button>

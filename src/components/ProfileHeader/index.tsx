@@ -1,13 +1,16 @@
 import { Button } from '@heroui/react'
+import { useNavigate } from 'react-router'
 import type { User } from '../../types/user'
 import { useAuth } from '../../hooks/useAuth'
+import { ROUTES } from '../../config/routes'
 
 interface ProfileHeaderProps {
   user: User
 }
 
 const ProfileHeader = ({ user }: ProfileHeaderProps) => {
-  const { user: authUser } = useAuth()
+  const { user: authUser, isInitialized } = useAuth()
+  const navigate = useNavigate()
   const isOwnProfile = authUser?.id === user.id
 
   return (
@@ -25,17 +28,23 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
             <p>{user.bio}</p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {isOwnProfile ? (
-              <Button variant="outline" className="px-6 font-medium">
-                Editar perfil
-              </Button>
-            ) : (
-              <Button variant="primary" className="px-6 font-medium">
-                Seguir
-              </Button>
-            )}
-          </div>
+          {isInitialized && (
+            <div className="flex flex-wrap gap-2">
+              {isOwnProfile ? (
+                <Button
+                  variant="outline"
+                  className="px-6 font-medium"
+                  onClick={() => navigate(ROUTES.PROFILE_EDIT)}
+                >
+                  Editar perfil
+                </Button>
+              ) : (
+                <Button variant="primary" className="px-6 font-medium">
+                  Seguir
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

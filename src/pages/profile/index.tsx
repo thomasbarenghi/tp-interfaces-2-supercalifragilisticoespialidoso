@@ -1,3 +1,4 @@
+import { useParams } from 'react-router'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import PostGrid from '../../components/PostGrid'
 import Main from '../../components/Main'
@@ -6,13 +7,15 @@ import ProfileHeader from '../../components/ProfileHeader'
 
 const Profile = () => {
   usePageTitle('Profile')
-  const { user, isLoading } = useUser()
+  const { id } = useParams<{ id?: string }>()
+  const { user, isLoading } = useUser(id)
+  console.log(user)
   return (
     <Main>
       {user && (
         <section className="flex flex-col gap-14">
           <ProfileHeader user={user} />
-          <PostGrid posts={user.posts} isLoading={isLoading} skeletonCount={6} user={user} />
+          <PostGrid posts={user.posts} isLoading={isLoading} skeletonCount={6} />
         </section>
       )}
     </Main>

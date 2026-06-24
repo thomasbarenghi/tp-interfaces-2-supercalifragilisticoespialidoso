@@ -2,44 +2,53 @@ import { useNavigate } from 'react-router'
 import clsx from 'clsx'
 import { ROUTES } from '../../config/routes'
 import type { Post } from '../../types/post.ts'
-import type { User } from '../../types/user.ts'
 
 interface PostCardProps {
   post: Post
-  user?: User
 }
 
-const PostCard = ({ post, user }: PostCardProps) => {
+const PostCard = ({ post }: PostCardProps) => {
   const navigate = useNavigate()
+  const { author } = post
 
   return (
     <div
       className="group relative flex flex-col gap-3 cursor-pointer"
       onClick={() => navigate(ROUTES.POST(post._id))}
     >
-      {user && (
+      {author && (
         <div className="flex items-center gap-2 px-1">
           <img
-            src={user.profileImage || 'https://via.placeholder.com/40'}
-            alt={user.name}
+            src={author.profileImage || 'https://via.placeholder.com/40'}
+            alt={author.name}
             className="w-6 h-6 rounded-full object-cover"
           />
           <div className="flex items-center gap-1 text-xs font-semibold">
-            <span>{user.name}</span>
+            <span
+              className="hover:underline"
+              onClick={(e) => {
+                e.stopPropagation()
+                navigate(ROUTES.PROFILE(author._id))
+              }}
+            >
+              {author.name}
+            </span>
             <span className="text-gray-400 font-normal">| hace 2 días</span>
           </div>
         </div>
       )}
-      <div className="relative overflow-hidden rounded-2xl">
-        <img
-          alt={post._id}
-          loading="lazy"
-          src={post.images[0].url}
-          className={clsx(
-            'h-full w-full object-cover aspect-3/4 dark:brightness-90 transition-[opacity,transform] duration-300 group-hover:scale-[1.03]',
-          )}
-        />
-      </div>
+      {post.images?.[0]?.url && (
+        <div className="relative overflow-hidden rounded-2xl">
+          <img
+            alt={post._id}
+            loading="lazy"
+            src={post.images[0].url}
+            className={clsx(
+              'h-full w-full object-cover aspect-3/4 dark:brightness-90 transition-[opacity,transform] duration-300 group-hover:scale-[1.03]',
+            )}
+          />
+        </div>
+      )}
       <div className="px-1">
         <p className="text-sm line-clamp-2 leading-relaxed">
           {post.description ||
