@@ -1,0 +1,28 @@
+src/config/api.ts
+  s_fb7227aad60b8b::t_0442e4ccec72da 15-16
+src/pages/post-detail/index.tsx
+  s_fb7227aad60b8b::t_baff29f0e66e07 3,6-7,25-47,126-139,148-149,151-177,179-198,200-231
+src/hooks/useComments.ts
+  s_fb7227aad60b8b::t_eb11b826ecc602 1-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "ea235bc4e9123eb779cfaebec50f3b2db892d433",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_fb7227aad60b8b": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "0adcaefe-0235-492b-9e1c-632688ea6b53",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
