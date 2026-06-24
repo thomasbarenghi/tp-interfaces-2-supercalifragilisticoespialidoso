@@ -26,7 +26,7 @@ export const useUserPosts = ({ limit }: UsePostOptions = {}) => {
 
     params.set('_limit', String(limit ?? POSTS_PER_PAGE))
 
-    const endpoint = `${API.USER_POSTS_BY_ID("6a3b4487d5f7bc094426d202")}?${params}`
+    const endpoint = `${API.USER_POSTS_BY_ID("6a3b4ebde62a22d0367285c6")}?${params}`
 
     const { data, error, isLoading } = useSWR<PostResponse>(endpoint, paginatedFetcher)
 

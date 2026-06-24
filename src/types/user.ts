@@ -1,4 +1,4 @@
-import { Post } from './post'
+import type { Post } from './post'
 
 export interface User {
     _id: string
