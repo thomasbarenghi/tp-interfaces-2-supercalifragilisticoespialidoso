@@ -1,0 +1,36 @@
+src/router.tsx
+  h_a5ee0ed7d5d05d 4-11,18,20-26
+src/components/MobileMenu/index.tsx
+  h_a5ee0ed7d5d05d 1
+src/components/Footer/index.tsx
+  h_a5ee0ed7d5d05d 14,19,35
+src/pages/register/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/pages/edit-user/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/components/Header/index.tsx
+  h_a5ee0ed7d5d05d 10-12
+src/pages/profile/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/pages/create-post/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/pages/edit-post/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/pages/login/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/pages/feed/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "1a7669b7e9f639c35b1a3a74c9ad9e3e3dec323d",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
