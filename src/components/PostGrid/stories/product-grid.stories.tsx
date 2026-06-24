@@ -4,7 +4,7 @@ import ProductGrid from '../index'
 
 const meta: Meta<typeof ProductGrid> = {
   component: ProductGrid,
-  title: 'Components/ProductGrid',
+  title: 'Components/PostGrid',
   parameters: { layout: 'padded' },
   decorators: [
     (Story) => (

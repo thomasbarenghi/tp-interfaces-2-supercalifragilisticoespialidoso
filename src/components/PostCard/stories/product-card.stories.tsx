@@ -3,7 +3,7 @@ import ProductCard from '../index'
 
 const meta: Meta<typeof ProductCard> = {
   component: ProductCard,
-  title: 'Components/ProductCard',
+  title: 'Components/PostCard',
   parameters: { layout: 'centered' },
   decorators: [
     (Story) => (

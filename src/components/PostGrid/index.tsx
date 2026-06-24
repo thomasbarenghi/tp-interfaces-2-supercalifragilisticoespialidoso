@@ -1,19 +1,19 @@
-import ProductCard from '../ProductCard'
+import PostCard from '../PostCard'
 import ProductCardSkeleton from './ProductCardSkeleton'
-import type { Product } from '../../types/product'
+import type {Post} from "../../types/post.ts";
 
 interface Props {
-  products: Product[]
+  posts: Post[]
   isLoading?: boolean
   skeletonCount?: number
 }
 
-const ProductGrid = ({ products, isLoading, skeletonCount = 8 }: Props) => (
+const PostGrid = ({ posts, isLoading, skeletonCount = 8 }: Props) => (
   <div className="grid grid-cols-2 gap-6 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
     {isLoading
       ? Array.from({ length: skeletonCount }).map((_, i) => <ProductCardSkeleton key={i} />)
-      : products.map((product) => <ProductCard key={product.id} product={product} />)}
+      : posts.map((post) => <PostCard key={post._id} post={post} />)}
   </div>
 )
 
-export default ProductGrid
+export default PostGrid

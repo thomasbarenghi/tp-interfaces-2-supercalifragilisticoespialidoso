@@ -2,6 +2,7 @@ export const ROUTES = {
   HOME: '/',
   CONTACT: '/contact',
   LIST: '/list',
+  POST: (postId: string) => `/post/${postId}`,
   PRODUCT: (slug: string) => `/product/${slug}`,
   CART: '/cart',
   CHECKOUT: '/checkout',
