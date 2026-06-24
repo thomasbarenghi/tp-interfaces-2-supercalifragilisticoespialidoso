@@ -1,0 +1,28 @@
+src/components/PostGrid/PostCardSkeleton.tsx
+  s_16d129b4fab867::t_5aecb8b41256f2 5-8,10,12-13
+src/components/PostGrid/PostCardEmptyState.tsx
+  h_a5ee0ed7d5d05d 4-5,8,10-12
+src/components/ProfileHeader/index.tsx
+  h_a5ee0ed7d5d05d 3,13,25,29,35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "cd4860bcce663e9464a3d0cbf97ca58ea8454aa5",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_16d129b4fab867": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6236d17-f1d5-4413-bf33-507a56e875a2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
