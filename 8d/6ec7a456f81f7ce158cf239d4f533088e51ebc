@@ -1,0 +1,38 @@
+src/utils/format.ts
+  s_fb7227aad60b8b::t_22940320a1fe5a 1-8
+src/components/PostComments/index.tsx
+  s_fb7227aad60b8b::t_a8f4f85436917c 1-57
+src/pages/post-detail/PostDetailSkeleton.tsx
+  s_fb7227aad60b8b::t_89e5944d0d848b 1-25
+src/pages/post-detail/index.tsx
+  s_fb7227aad60b8b::t_22466377cdaf9b 25-27
+  s_fb7227aad60b8b::t_4db5d8aab874b4 7,11,19,22,56,64
+  s_fb7227aad60b8b::t_f452e863501ce2 8-9,62
+src/components/PostComments/CommentItem.tsx
+  s_fb7227aad60b8b::t_1570c66f305284 1-78
+src/components/PostTags/index.tsx
+  s_fb7227aad60b8b::t_75e478d79d77de 1-24
+src/components/PostComments/CommentForm.tsx
+  s_fb7227aad60b8b::t_5d029529112e64 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "8d6ec7a456f81f7ce158cf239d4f533088e51ebc",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_fb7227aad60b8b": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "0adcaefe-0235-492b-9e1c-632688ea6b53",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
