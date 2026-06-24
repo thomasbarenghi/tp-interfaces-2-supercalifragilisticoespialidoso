@@ -1,0 +1,14 @@
+.husky/pre-commit
+  h_a5ee0ed7d5d05d 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "cf0b23510d3d003b4f8f6c9039a70c11c1db250d",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
