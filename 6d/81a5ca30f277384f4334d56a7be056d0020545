@@ -1,0 +1,71 @@
+src/hooks/useAuth.ts
+  s_40d5c9c2cf2838::t_dda722c3445a3f 22,36
+  s_40d5c9c2cf2838::t_636ec1d41d2781 81
+src/config/routes.ts
+  s_40d5c9c2cf2838::t_6d0ec48d9e1fa0 13-14
+src/components/ProfileHeader/index.tsx
+  s_40d5c9c2cf2838::t_cb6eb3cb9d5410 2,5,12-13,31-47
+src/pages/post-detail/index.tsx
+  s_40d5c9c2cf2838::t_d37c5674261c17 6,26-37,39-41,43-44,55-66,123-124
+  s_40d5c9c2cf2838::t_0a0e61c7aad7a4 21,50-51,67-80,82,85,95-119
+  s_40d5c9c2cf2838::t_2d2069f3f469d7 1-2,4-5,7-15,18-20,22-23,25,38,42,45,47-49,52-54,81,83-84,86-89,91-92,94,120-122,125-126
+  s_40d5c9c2cf2838::t_9d986e5d104992 90,93
+src/pages/profile/index.tsx
+  h_a5ee0ed7d5d05d 12
+  s_7f6a6d1b736d4a::t_5c35a25808645f 1,10-11
+  s_40d5c9c2cf2838::t_83e6a498bd42c7 18
+src/config/api.ts
+  s_40d5c9c2cf2838::t_6eab0662919feb 6
+src/hocs/withAuth.tsx
+  s_40d5c9c2cf2838::t_456d0c0508139f 2-3,6,8,10,12-13
+  s_40d5c9c2cf2838::t_ba4e80d7337997 1,4-5,7,9,11,14
+src/components/Header/index.tsx
+  s_40d5c9c2cf2838::t_ef79888f6be908 1
+  s_40d5c9c2cf2838::t_8124cef75e825f 8
+  s_40d5c9c2cf2838::t_ad03b1ab3ac89b 3,47,49,52,54
+src/router.tsx
+  s_40d5c9c2cf2838::t_72116c1d9d0cd3 12,21-33
+  h_a5ee0ed7d5d05d 4-11
+src/types/post.ts
+  s_40d5c9c2cf2838::t_6a42b3110617ed 1-6,38
+  s_40d5c9c2cf2838::t_93b8dd57426de5 8-29,33-36,39-42
+src/hooks/useUserPosts.ts
+  s_40d5c9c2cf2838::t_6c5555dfb09ab1 4,9-11,13-16,20,24,26,28-30,32,34,36-40,42-43,45-48
+src/components/PostCard/index.tsx
+  s_40d5c9c2cf2838::t_f5b6f8062135ec 27-30,32-33,35
+  s_40d5c9c2cf2838::t_176bc1d26c786c 40-51
+  s_40d5c9c2cf2838::t_c7241b35fe40b7 10,12,19,22-23,31,34
+src/hooks/usePost.ts
+  s_40d5c9c2cf2838::t_d217ad016c29eb 1-14
+src/components/PostGrid/index.tsx
+  s_40d5c9c2cf2838::t_67ec3abb3cb185 12,18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "6d81a5ca30f277384f4334d56a7be056d0020545",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_40d5c9c2cf2838": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "dd4c15ce-c429-4a5a-9c9c-b5f739640697",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    },
+    "s_7f6a6d1b736d4a": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1781789616070",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
