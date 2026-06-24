@@ -1,7 +1,10 @@
 import { useNavigate, useParams } from 'react-router'
 import { Avatar } from '@heroui/react'
+import { useState } from 'react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { usePost } from '../../hooks/usePost.ts'
+import { useAuth } from '../../hooks/useAuth.ts'
+import { useComments } from '../../hooks/useComments.ts'
 import Main from '../../components/Main'
 import TwoColumnLayout from '../../components/TwoColumnLayout'
 import { ROUTES } from '../../config/routes.ts'
@@ -19,6 +22,29 @@ const PostDetail = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const { post, isLoading } = usePost(id!)
+  const { user: authUser } = useAuth()
+  const { addComment, editComment, deleteComment, isSubmitting } = useComments(id!)
+
+  const [newText, setNewText] = useState('')
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [editingText, setEditingText] = useState('')
+
+  const handleAdd = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!newText.trim() || !authUser) return
+    await addComment(newText.trim(), authUser._id || authUser.id)
+    setNewText('')
+  }
+
+  const handleEdit = async (commentId: string) => {
+    if (!editingText.trim()) return
+    await editComment(commentId, editingText.trim())
+    setEditingId(null)
+  }
+
+  const handleDelete = async (commentId: string) => {
+    await deleteComment(commentId)
+  }
 
   if (isLoading) {
     return (
@@ -97,13 +123,20 @@ const PostDetail = () => {
           )}
 
           {/* Comentarios */}
-          {post.comments?.length > 0 && (
-            <div className="flex flex-col gap-4 pt-2 border-t border-current/10">
-              <h3 className="font-semibold text-sm text-foreground/60 uppercase tracking-wide">
-                Comentarios ({post.comments.length})
-              </h3>
-              {post.comments.map((comment) => (
-                <div key={comment._id} className="flex gap-3">
+          <div className="flex flex-col gap-4 pt-2 border-t border-current/10">
+            <h3 className="font-semibold text-sm text-foreground/60 uppercase tracking-wide">
+              Comentarios ({post.comments?.length ?? 0})
+            </h3>
+
+            {post.comments?.map((comment) => {
+              const isOwn =
+                authUser &&
+                (comment.userId._id === authUser._id ||
+                  comment.userId._id === authUser.id ||
+                  comment.userId.id === authUser.id)
+
+              return (
+                <div key={comment._id} className="flex gap-3 group">
                   <Avatar size="sm">
                     <Avatar.Image
                       src={comment.userId.profileImage}
@@ -112,14 +145,90 @@ const PostDetail = () => {
                     />
                     <Avatar.Fallback>{comment.userId.name?.[0]}</Avatar.Fallback>
                   </Avatar>
-                  <div className="flex flex-col gap-0.5">
+
+                  <div className="flex flex-col gap-0.5 flex-1 min-w-0">
                     <span className="text-sm font-semibold">{comment.userId.name}</span>
-                    <p className="text-sm text-foreground/80">{comment.text}</p>
+
+                    {editingId === comment._id ? (
+                      <div className="flex flex-col gap-2">
+                        <textarea
+                          className="text-sm w-full rounded-lg border border-current/20 bg-background p-2 resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+                          rows={2}
+                          value={editingText}
+                          onChange={(e) => setEditingText(e.target.value)}
+                        />
+                        <div className="flex gap-2">
+                          <button
+                            className="text-xs font-medium text-primary"
+                            onClick={() => handleEdit(comment._id)}
+                          >
+                            Guardar
+                          </button>
+                          <button
+                            className="text-xs text-foreground/50"
+                            onClick={() => setEditingId(null)}
+                          >
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-foreground/80 break-words">{comment.text}</p>
+                    )}
                   </div>
+
+                  {isOwn && editingId !== comment._id && (
+                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                      <button
+                        className="text-xs text-foreground/50 hover:text-foreground"
+                        onClick={() => {
+                          setEditingId(comment._id)
+                          setEditingText(comment.text)
+                        }}
+                      >
+                        Editar
+                      </button>
+                      <button
+                        className="text-xs text-red-400 hover:text-red-600"
+                        onClick={() => handleDelete(comment._id)}
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  )}
                 </div>
-              ))}
-            </div>
-          )}
+              )
+            })}
+
+            {/* Nuevo comentario */}
+            {authUser && (
+              <form onSubmit={handleAdd} className="flex gap-2 pt-2 border-t border-current/10">
+                <Avatar size="sm">
+                  <Avatar.Image
+                    src={authUser.profileImage}
+                    alt={authUser.name}
+                    className="object-cover"
+                  />
+                  <Avatar.Fallback>{authUser.name?.[0]}</Avatar.Fallback>
+                </Avatar>
+                <div className="flex flex-1 gap-2">
+                  <input
+                    className="flex-1 text-sm rounded-full border border-current/20 bg-background px-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Agregar comentario..."
+                    value={newText}
+                    onChange={(e) => setNewText(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    disabled={!newText.trim() || isSubmitting}
+                    className="text-sm font-semibold text-primary disabled:opacity-40"
+                  >
+                    Publicar
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
         </TwoColumnLayout.Sidebar>
       </TwoColumnLayout>
     </Main>

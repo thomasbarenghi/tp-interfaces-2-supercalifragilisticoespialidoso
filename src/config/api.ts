@@ -12,4 +12,6 @@ export const API = {
   FOLLOW: (userId: string, targetId: string) => `${BASE}/users/${userId}/follow/${targetId}`,
   UNFOLLOW: (userId: string, targetId: string) => `${BASE}/users/${userId}/unfollow/${targetId}`,
   FOLLOWERS: (userId: string) => `${BASE}/users/${userId}/followers`,
+  COMMENTS: `${BASE}/comments`,
+  COMMENT_BY_ID: (id: string) => `${BASE}/comments/${id}`,
 } as const
