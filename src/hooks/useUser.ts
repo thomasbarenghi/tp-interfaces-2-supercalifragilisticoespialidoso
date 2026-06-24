@@ -1,17 +1,23 @@
 import useSWR from 'swr'
 import { API } from '../config/api'
-import {fetcher} from '../lib/fetcher'
-import type {User} from "../types/user.ts";
+import { fetcher } from '../lib/fetcher'
+import type { User } from '../types/user.ts'
+import { useAuth } from './useAuth'
 
-export const useUser = () => {
-    const endpoint = `${API.USER_BY_ID("6a3b4487d5f7bc094426d202")}`
+export const useUser = (id?: string) => {
+  const { user: authUser } = useAuth()
+  const userId = id || authUser?.id || '6a3c2ca0c708d8c1710c264a'
+  const endpoint = `${API.USER_BY_ID(userId)}`
 
-    const { data, error, isLoading } = useSWR<User>(endpoint, fetcher)
-    console.log(data)
+  const { data, error, isLoading } = useSWR<User>(endpoint, fetcher)
 
-    return {
-        user: data,
-        isLoading,
-        error,
-    }
+  // Si estamos pidiendo el perfil del usuario logueado, podemos usar los datos locales
+  // mientras cargan los de la API (o si hay error pero tenemos algo guardado)
+  const user = userId === authUser?.id ? ({ ...authUser, ...data } as User) : data
+
+  return {
+    user,
+    isLoading: !data && isLoading,
+    error,
+  }
 }

@@ -10,4 +10,7 @@ export const ROUTES = {
   CHECKOUT_ERROR: '/checkout/error',
   TRACKING: '/tracking',
   TRACKING_ORDER: (orderNumber: string) => `/tracking/${orderNumber}`,
+  PROFILE: (userId: string) => `/profile/${userId}`,
+  PROFILE_EDIT: '/profile/edit',
+  POST_CREATE: '/post/create',
 } as const

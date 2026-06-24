@@ -1,25 +1,25 @@
+import { useParams } from 'react-router'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
-import ProductGrid from "../../components/PostGrid";
-import Main from "../../components/Main";
-import {POSTS_PER_PAGE} from "../../hooks/useUserPosts.ts";
-import {useUser} from "../../hooks/useUser.ts";
+import PostGrid from '../../components/PostGrid'
+import Main from '../../components/Main'
+import { useUser } from '../../hooks/useUser.ts'
+import ProfileHeader from '../../components/ProfileHeader'
 
 const Profile = () => {
-    usePageTitle('Profile')
-    const { user, isLoading } = useUser()
-
-    return (
-        <Main>
-            hola {user.name}
-            {
-                user && (
-                    <section className="flex flex-col gap-y-12">
-                        <ProductGrid posts={user.posts ?? []} isLoading={isLoading} skeletonCount={POSTS_PER_PAGE} />
-                    </section>
-                )
-            }
-        </Main>
-    )
+  usePageTitle('Profile')
+  const { id } = useParams<{ id?: string }>()
+  const { user, isLoading } = useUser(id)
+  console.log(user)
+  return (
+    <Main>
+      {user && (
+        <section className="flex flex-col gap-14">
+          <ProfileHeader user={user} />
+          <PostGrid posts={user.posts} isLoading={isLoading} skeletonCount={6} />
+        </section>
+      )}
+    </Main>
+  )
 }
 
 export default Profile

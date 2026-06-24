@@ -1,16 +1,23 @@
-import { Post } from './post'
+import type { Post } from './post'
+
+export interface FollowUser {
+  _id: string
+  id: string
+  nickName: string
+  name: string
+}
 
 export interface User {
-    _id: string
-    id: string
-    nickName: string
-    email: string
-    name: string
-    profileImage: string
-    bio: string
-    followers: string[]
-    following: string[]
-    posts: Post[]
-    createdAt: string
-    updatedAt: string
+  _id: string
+  id: string
+  nickName: string
+  email: string
+  name: string
+  profileImage: string
+  bio: string
+  followers: FollowUser[]
+  following: FollowUser[]
+  posts: Post[]
+  createdAt: string
+  updatedAt: string
 }
