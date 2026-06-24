@@ -1,0 +1,32 @@
+src/pages/profile/index.tsx
+  h_a5ee0ed7d5d05d 2-5
+src/components/PostCard/index.tsx
+  h_a5ee0ed7d5d05d 4-5,8-9,39,44
+src/components/PostGrid/index.tsx
+  h_a5ee0ed7d5d05d 3-5,18
+.husky/pre-commit
+  s_16d129b4fab867::t_fdda60c731c268 1
+package.json
+  s_16d129b4fab867::t_52d17ec68aceaa 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "15d86be5b39107531aa1c2c9dad1f5c5d9646fc3",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_16d129b4fab867": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6236d17-f1d5-4413-bf33-507a56e875a2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
