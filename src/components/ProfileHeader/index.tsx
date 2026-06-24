@@ -1,11 +1,15 @@
 import { Button } from '@heroui/react'
 import type { User } from '../../types/user'
+import { useAuth } from '../../hooks/useAuth'
 
 interface ProfileHeaderProps {
   user: User
 }
 
 const ProfileHeader = ({ user }: ProfileHeaderProps) => {
+  const { user: authUser } = useAuth()
+  const isOwnProfile = authUser?.id === user.id
+
   return (
     <div className="flex justify-center px-4">
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl w-full">
@@ -22,13 +26,15 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button variant="primary" className="px-6 font-medium">
-              Seguir
-            </Button>
-
-            <Button variant="outline" className="px-6 font-medium">
-              Editar perfil
-            </Button>
+            {isOwnProfile ? (
+              <Button variant="outline" className="px-6 font-medium">
+                Editar perfil
+              </Button>
+            ) : (
+              <Button variant="primary" className="px-6 font-medium">
+                Seguir
+              </Button>
+            )}
           </div>
         </div>
       </div>

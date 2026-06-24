@@ -7,4 +7,5 @@ export const API = {
   PRODUCT: (id: string) => `${BASE}/products/${id}`,
   ORDERS: `${BASE}/orders`,
   ORDER_BY_NUMBER: (orderNumber: string) => `${BASE}/orders?orderNumber=${orderNumber}`,
+  LOGIN: `${BASE}/auth/login`,
 } as const
