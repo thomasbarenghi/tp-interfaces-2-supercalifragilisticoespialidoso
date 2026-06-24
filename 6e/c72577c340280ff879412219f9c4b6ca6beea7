@@ -1,0 +1,36 @@
+src/config/routes.ts
+  h_a5ee0ed7d5d05d 5
+src/hooks/useUserPosts.ts
+  h_a5ee0ed7d5d05d 1-53
+src/types/post.ts
+  h_a5ee0ed7d5d05d 1-13
+src/components/PostGrid/index.tsx
+  h_a5ee0ed7d5d05d 1-19
+src/components/PostCard/stories/product-card.stories.tsx
+  h_a5ee0ed7d5d05d 1-60
+src/pages/profile/index.tsx
+  h_a5ee0ed7d5d05d 2-5,9-10,12-21
+src/types/user.ts
+  h_a5ee0ed7d5d05d 1-16
+.env.local
+  h_a5ee0ed7d5d05d 1
+src/config/api.ts
+  h_a5ee0ed7d5d05d 4-5
+src/hooks/useUser.ts
+  h_a5ee0ed7d5d05d 1-17
+src/components/PostGrid/stories/product-grid.stories.tsx
+  h_a5ee0ed7d5d05d 1-90
+src/components/PostCard/index.tsx
+  h_a5ee0ed7d5d05d 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "6ec72577c340280ff879412219f9c4b6ca6beea7",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
