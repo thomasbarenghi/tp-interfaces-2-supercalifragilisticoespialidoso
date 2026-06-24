@@ -1,31 +1,19 @@
-import { Avatar, Link, SearchField } from '@heroui/react'
+import { Avatar, Link } from '@heroui/react'
 import clsx from 'clsx'
 import { Bars, ShoppingCart } from '@gravity-ui/icons'
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
 import Logo from '../Logo'
 import MobileMenu from '../MobileMenu'
 import { ROUTES } from '../../config/routes'
 
 const NAV_ITEMS = [
-  { text: 'Todo', icon: false, underline: false, href: ROUTES.LIST },
-  { text: 'Remeras', icon: false, underline: false, href: `${ROUTES.LIST}?category=remeras` },
-  { text: 'Pantalones', icon: false, underline: false, href: `${ROUTES.LIST}?category=pantalones` },
-  { text: 'Camperas', icon: false, underline: false, href: `${ROUTES.LIST}?category=camperas` },
-  { text: 'Zapatillas', icon: false, underline: false, href: `${ROUTES.LIST}?category=zapatillas` },
-  { text: 'Seguir mi compra', icon: true, underline: true, href: ROUTES.TRACKING },
+  { text: 'Feed', icon: false, underline: false, href: "" },
+  { text: 'Sobre nosotros', icon: false, underline: false, href: "" },
+  { text: 'Crear publicacion', icon: true, underline: true, href: "" },
 ]
 
 const Header = () => {
-  const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
-
-  const handleSearch = (value: string) => {
-    if (value.trim()) {
-      navigate(`${ROUTES.LIST}?search=${encodeURIComponent(value.trim())}`)
-      setMenuOpen(false)
-    }
-  }
 
   return (
     <>
@@ -57,20 +45,11 @@ const Header = () => {
 
           {/* Desktop: search + cart */}
           <div className="hidden xl:flex items-center gap-6">
-            <SearchField name="search" variant="secondary" onSubmit={handleSearch}>
-              <SearchField.Group>
-                <SearchField.SearchIcon />
-                <SearchField.Input className="w-70" placeholder="Busca entre miles de productos" />
-                <SearchField.ClearButton />
-              </SearchField.Group>
-            </SearchField>
-            <Link href={ROUTES.CART} className="no-underline">
               <Avatar color="accent" variant="soft">
                 <Avatar.Fallback>
                   <ShoppingCart />
                 </Avatar.Fallback>
               </Avatar>
-            </Link>
           </div>
 
           {/* Mobile: cart + hamburger */}
@@ -90,7 +69,6 @@ const Header = () => {
       </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)}>
-        <MobileMenu.Search onSubmit={handleSearch} />
         <MobileMenu.Nav>
           {NAV_ITEMS.map((item) => (
             <MobileMenu.NavItem

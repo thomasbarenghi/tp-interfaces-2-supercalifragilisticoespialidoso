@@ -1,32 +1,29 @@
 import { createBrowserRouter } from 'react-router'
 import AppLayout from './layouts/AppLayout'
-import Cart from './pages/cart'
-import Checkout from './pages/checkout'
-import Error from './pages/error'
-import Home from './pages/home'
-import List from './pages/list'
-import OrderSearch from './pages/order-search'
-import OrderTracking from './pages/order-tracking'
-import ProductDetail from './pages/product-detail'
-import Success from './pages/success'
 import Contact from './pages/contact'
+import Feed from "./pages/feed";
+import PostDetail from "./pages/post-detail";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import EditPost from "./pages/edit-post";
+import CreatePost from "./pages/create-post";
+import EditUser from "./pages/edit-user";
+import Profile from "./pages/profile";
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: 'home', element: <Home /> },
+      { index: true, element: <Feed /> },
       { path: 'contact', element: <Contact /> },
-      { path: 'list', element: <List /> },
-      { path: 'product/:slug', element: <ProductDetail /> },
-      { path: 'cart', element: <Cart /> },
-      { path: 'checkout', element: <Checkout /> },
-      { path: 'checkout/success', element: <Success /> },
-      { path: 'checkout/error', element: <Error /> },
-      { path: 'tracking', element: <OrderSearch /> },
-      { path: 'tracking/:orderNumber', element: <OrderTracking /> },
+      { path: 'post/:id', element: <PostDetail /> },
+      { path: 'login', element: <Login /> },
+      { path: 'register', element: <Register /> },
+      { path: 'post/:id/edit', element: <EditPost /> },
+      { path: 'post/create', element: <CreatePost /> },
+      { path: 'profile/edit', element: <EditUser /> },
+      { path: 'profile', element: <Profile /> },
     ],
   },
 ])

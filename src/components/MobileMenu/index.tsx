@@ -1,4 +1,4 @@
-import { Link, SearchField } from '@heroui/react'
+import { Link } from '@heroui/react'
 import { Xmark } from '@gravity-ui/icons'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
@@ -32,20 +32,6 @@ const Root = ({ open, onClose, children }: RootProps) => (
   </div>
 )
 
-interface SearchProps {
-  onSubmit: (value: string) => void
-}
-
-const Search = ({ onSubmit }: SearchProps) => (
-  <SearchField name="search-mobile" onSubmit={onSubmit}>
-    <SearchField.Group>
-      <SearchField.SearchIcon />
-      <SearchField.Input placeholder="Busca entre miles de productos" />
-      <SearchField.ClearButton />
-    </SearchField.Group>
-  </SearchField>
-)
-
 const Nav = ({ children }: { children: ReactNode }) => (
   <ul className="flex flex-col gap-1">{children}</ul>
 )
@@ -75,14 +61,12 @@ const NavItem = ({ href, underline, icon, onPress, children }: NavItemProps) => 
 )
 
 type MobileMenuComponent = typeof Root & {
-  Search: typeof Search
   Nav: typeof Nav
   NavItem: typeof NavItem
 }
 
 const MobileMenu = Root as MobileMenuComponent
 
-MobileMenu.Search = Search
 MobileMenu.Nav = Nav
 MobileMenu.NavItem = NavItem
 

@@ -3,14 +3,6 @@ import Logo from '../Logo'
 import { useDarkMode } from '../../hooks/useDarkMode'
 import { ROUTES } from '../../config/routes'
 
-const shopLinks = [
-  { label: 'Todos los productos', href: ROUTES.LIST },
-  { label: 'Remeras', href: `${ROUTES.LIST}?category=remeras` },
-  { label: 'Pantalones', href: `${ROUTES.LIST}?category=pantalones` },
-  { label: 'Camperas', href: `${ROUTES.LIST}?category=camperas` },
-  { label: 'Zapatillas', href: `${ROUTES.LIST}?category=zapatillas` },
-]
-
 const Footer = () => {
   const { dark, toggle } = useDarkMode()
   return (
@@ -19,26 +11,13 @@ const Footer = () => {
       data-theme="dark"
     >
       <div className="container px-6 md:px-10 py-16 flex flex-col sm:flex-row justify-between gap-10">
-        <div className="flex flex-col gap-6 max-w-xs">
+        <div className="flex flex-col gap-6">
           <a href={ROUTES.HOME}>
             <Logo />
           </a>
           <p className="text-sm opacity-60 leading-relaxed">
-            Estilo urbano honesto. Diseñado y producido en Argentina desde 2019.
+            Una red social creada para compartir, descubrir y hacer ruido.
           </p>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <p className="font-semibold text-sm">Tienda</p>
-          {shopLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm opacity-60 hover:opacity-100 transition-opacity"
-            >
-              {link.label}
-            </a>
-          ))}
         </div>
 
         <div className="flex flex-col gap-3">
@@ -53,7 +32,7 @@ const Footer = () => {
       </div>
 
       <div className="container px-6 md:px-10 py-5 border-t border-current/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <p className="text-xs opacity-40">© 2026 hero. Todos los derechos reservados.</p>
+        <p className="text-xs opacity-40">© 2026 Bang. Todos los derechos reservados.</p>
         <div className="flex items-center gap-4">
           <label className="flex items-center gap-2 cursor-pointer">
             <span className="text-xs opacity-60">Modo oscuro</span>
