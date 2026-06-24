@@ -1,0 +1,24 @@
+src/config/routes.ts
+  s_fb7227aad60b8b::t_c2f8d1d25ef1e5 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "95dccb98ac88217acfba434773f23ef650a3c4eb",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_fb7227aad60b8b": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "0adcaefe-0235-492b-9e1c-632688ea6b53",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
