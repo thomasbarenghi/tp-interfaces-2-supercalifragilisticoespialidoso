@@ -16,6 +16,27 @@ interface AuthUser {
   updatedAt: string
 }
 
+const AUTH_USER_KEY = 'auth_user'
+
+const normalizeUser = (user: Partial<AuthUser> & { _id?: string; id?: string }) =>
+  ({
+    ...user,
+    id: user.id ?? user._id ?? '',
+    _id: user._id ?? user.id ?? '',
+  }) as AuthUser
+
+const loadUser = (): AuthUser | null => {
+  const savedUser = localStorage.getItem(AUTH_USER_KEY)
+  if (!savedUser) return null
+
+  try {
+    return JSON.parse(savedUser) as AuthUser
+  } catch {
+    localStorage.removeItem(AUTH_USER_KEY)
+    return null
+  }
+}
+
 export const useAuth = () => {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -23,22 +44,15 @@ export const useAuth = () => {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('auth_user')
-    if (savedUser) {
-      try {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setUser(JSON.parse(savedUser))
-      } catch (e) {
-        console.error('Error parsing saved user', e)
-        localStorage.removeItem('auth_user')
-      }
-    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setUser(loadUser())
     setIsInitialized(true)
   }, [])
 
   const login = async (email: string, password: string) => {
     setIsLoading(true)
     setError(null)
+
     try {
       const response = await fetch(API.LOGIN, {
         method: 'POST',
@@ -48,20 +62,20 @@ export const useAuth = () => {
         body: JSON.stringify({ email, password }),
       })
 
+      const data = await response.json().catch(() => ({}))
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}))
-        throw new Error(errorData.message || 'Error al iniciar sesión')
+        throw new Error(data.message ?? 'Error al iniciar sesión')
       }
 
-      const data = await response.json()
-      const userData: AuthUser = { ...data.user, id: data.user._id || data.user.id }
-      localStorage.setItem('auth_user', JSON.stringify(userData))
+      const userData = normalizeUser(data.user)
+      localStorage.setItem(AUTH_USER_KEY, JSON.stringify(userData))
       setUser(userData)
+
       return userData
-    } catch (err: unknown) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      setError(err.message)
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Error desconocido'
+      setError(message)
       throw err
     } finally {
       setIsLoading(false)
@@ -69,8 +83,9 @@ export const useAuth = () => {
   }
 
   const logout = () => {
-    localStorage.removeItem('auth_user')
+    localStorage.removeItem(AUTH_USER_KEY)
     setUser(null)
+    setError(null)
   }
 
   return {
@@ -80,6 +95,6 @@ export const useAuth = () => {
     isLoading,
     isInitialized,
     error,
-    isAuthenticated: !!user,
+    isAuthenticated: user !== null,
   }
 }

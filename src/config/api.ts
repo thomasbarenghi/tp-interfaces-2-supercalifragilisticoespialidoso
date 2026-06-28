@@ -4,6 +4,7 @@ export const API = {
   USER_POSTS_BY_ID: (userId: string) => `${BASE}/users/${userId}/posts`,
   USER_BY_ID: (userId: string) => `${BASE}/users/${userId}`,
   POST_BY_ID: (postId: string) => `${BASE}/posts/${postId}`,
+  POSTS: `${BASE}/posts`,
   LOGIN: `${BASE}/auth/login`,
   FOLLOW: (userId: string, targetId: string) => `${BASE}/users/${userId}/follow/${targetId}`,
   UNFOLLOW: (userId: string, targetId: string) => `${BASE}/users/${userId}/unfollow/${targetId}`,

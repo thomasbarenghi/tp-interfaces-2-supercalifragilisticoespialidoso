@@ -8,36 +8,48 @@ export const useComments = (postId: string) => {
 
   const revalidate = () => mutate(API.POST_BY_ID(postId))
 
-  const addComment = async (text: string, userId: string) => {
+  const withSubmission = async <T>(fn: () => Promise<T>) => {
     setIsSubmitting(true)
     try {
-      const res = await fetch(API.COMMENTS, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, userId, postId }),
-      })
-      if (!res.ok) throw new Error('Error al comentar')
-      await revalidate()
+      return await fn()
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const editComment = async (commentId: string, text: string) => {
-    const res = await fetch(API.COMMENT_BY_ID(commentId), {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text }),
-    })
-    if (!res.ok) throw new Error('Error al editar')
-    await revalidate()
-  }
+  const addComment = (text: string, userId: string) =>
+    withSubmission(async () => {
+      const res = await fetch(API.COMMENTS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, userId, postId }),
+      })
 
-  const deleteComment = async (commentId: string) => {
-    const res = await fetch(API.COMMENT_BY_ID(commentId), { method: 'DELETE' })
-    if (!res.ok) throw new Error('Error al eliminar')
-    await revalidate()
-  }
+      if (!res.ok) throw new Error('Error al comentar')
+      await revalidate()
+    })
+
+  const editComment = (commentId: string, text: string) =>
+    withSubmission(async () => {
+      const res = await fetch(API.COMMENT_BY_ID(commentId), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      })
+
+      if (!res.ok) throw new Error('Error al editar')
+      await revalidate()
+    })
+
+  const deleteComment = (commentId: string) =>
+    withSubmission(async () => {
+      const res = await fetch(API.COMMENT_BY_ID(commentId), {
+        method: 'DELETE',
+      })
+
+      if (!res.ok) throw new Error('Error al eliminar')
+      await revalidate()
+    })
 
   return { addComment, editComment, deleteComment, isSubmitting }
 }

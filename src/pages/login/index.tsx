@@ -3,10 +3,12 @@ import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { useAuth } from '../../hooks/useAuth'
 import { Alert, Button, Card, Input, Label, TextField } from '@heroui/react'
 import Main from '../../components/Main'
+import { useNavigate } from 'react-router'
 
 const Login = () => {
   usePageTitle('Login')
   const { login, isLoading, error } = useAuth()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: 'password123',
@@ -16,7 +18,7 @@ const Login = () => {
     e.preventDefault()
     try {
       await login(formData.email, formData.password)
-      alert('Sesión iniciada correctamente')
+      navigate('/')
     } catch {
       // El error ya se maneja en el hook y se muestra en la UI
     }

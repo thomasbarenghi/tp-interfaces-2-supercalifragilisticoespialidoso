@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router'
 import { Avatar } from '@heroui/react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { usePost } from '../../hooks/usePost.ts'
+import { useAuth } from '../../hooks/useAuth.ts'
 import Main from '../../components/Main'
 import TwoColumnLayout from '../../components/TwoColumnLayout'
 import PostComments from '../../components/PostComments'
@@ -15,6 +16,7 @@ const PostDetail = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const { post, isLoading } = usePost(id!)
+  const { user } = useAuth()
 
   if (isLoading)
     return (
@@ -28,6 +30,7 @@ const PostDetail = () => {
   }
 
   const { author } = post
+  const isAuthor = user?._id === author._id
 
   return (
     <Main>
@@ -43,19 +46,34 @@ const PostDetail = () => {
         </TwoColumnLayout.Main>
 
         <TwoColumnLayout.Sidebar>
-          <button
-            className="flex items-center gap-3 text-left w-fit cursor-pointer"
-            onClick={() => navigate(ROUTES.PROFILE(author._id))}
-          >
-            <Avatar size="md">
-              <Avatar.Image src={author.profileImage} alt={author.name} className="object-cover" />
-              <Avatar.Fallback>{author.name?.[0]}</Avatar.Fallback>
-            </Avatar>
-            <div className="flex flex-col">
-              <span className="font-semibold text-base">{author.name}</span>
-              <span className="text-sm text-gray-400">{formatRelativeDate(post.createdAt)}</span>
-            </div>
-          </button>
+          <div className="flex items-center justify-between">
+            <button
+              className="flex items-center gap-3 text-left w-fit cursor-pointer"
+              onClick={() => navigate(ROUTES.PROFILE(author._id))}
+            >
+              <Avatar size="md">
+                <Avatar.Image
+                  src={author.profileImage}
+                  alt={author.name}
+                  className="object-cover"
+                />
+                <Avatar.Fallback>{author.name?.[0]}</Avatar.Fallback>
+              </Avatar>
+              <div className="flex flex-col">
+                <span className="font-semibold text-base">{author.name}</span>
+                <span className="text-sm text-gray-400">{formatRelativeDate(post.createdAt)}</span>
+              </div>
+            </button>
+
+            {isAuthor && (
+              <button
+                className="text-sm text-red-500 font-semibold border border-red-500 rounded-full px-4 py-1 hover:bg-red-50 transition-colors cursor-pointer"
+                onClick={() => navigate(ROUTES.POST_EDIT(id!))}
+              >
+                Editar
+              </button>
+            )}
+          </div>
 
           <p className="text-base leading-relaxed">{post.description}</p>
 
