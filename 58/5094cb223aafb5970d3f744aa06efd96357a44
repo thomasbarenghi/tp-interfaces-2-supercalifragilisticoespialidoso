@@ -1,0 +1,22 @@
+src/components/PostDetailContent/index.tsx
+  h_a5ee0ed7d5d05d 7
+src/pages/profile/components/EditProfileModal.tsx
+  h_a5ee0ed7d5d05d 1-74
+src/components/ProfileHeader/components/ProfileActionButton.tsx
+  h_a5ee0ed7d5d05d 2
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 11,17
+src/pages/post-detail/components/EditPostModal.tsx
+  h_a5ee0ed7d5d05d 1-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "585094cb223aafb5970d3f744aa06efd96357a44",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
