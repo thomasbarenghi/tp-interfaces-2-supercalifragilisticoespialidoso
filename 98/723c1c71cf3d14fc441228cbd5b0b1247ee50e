@@ -1,0 +1,46 @@
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 12,71-76
+src/hooks/useDeletePost.ts
+  h_a5ee0ed7d5d05d 1-26
+src/components/Header/CreatePostModal.tsx
+  h_a5ee0ed7d5d05d 3,8-16,20,25-33,52-55,60-104,108
+src/components/ProfileHeader/hooks/useProfileHeader.ts
+  h_a5ee0ed7d5d05d 4-5,9,28
+src/components/ConfirmationModal/index.tsx
+  h_a5ee0ed7d5d05d 1-58
+src/components/PostDetailContent/index.tsx
+  h_a5ee0ed7d5d05d 1-80
+src/components/PostFormFields/index.tsx
+  h_a5ee0ed7d5d05d 1-4,12-14,23-27,29-30,32,37-42,50-54,59-65,67-87,90-104,106-119,122
+src/components/ProfileHeader/components/ProfileActionButton.tsx
+  h_a5ee0ed7d5d05d 2,20
+src/components/UserFormFields/index.tsx
+  h_a5ee0ed7d5d05d 21,26,29-31,38
+src/components/ProfileHeader/components/UserList.tsx
+  h_a5ee0ed7d5d05d 13
+src/components/Header/index.tsx
+  h_a5ee0ed7d5d05d 10,29-30,46-51,80-85
+src/pages/post-detail/EditPostModal.tsx
+  h_a5ee0ed7d5d05d 2,5,7-8,10-26,28-30,32,34-35,38,41-44,58,60-68,72-120,124
+src/components/PostComments/components/CommentItem.tsx
+  h_a5ee0ed7d5d05d 37,51,57
+src/pages/profile/EditProfileModal.tsx
+  h_a5ee0ed7d5d05d 1-100
+src/components/PostCard/PostDetailModal.tsx
+  h_a5ee0ed7d5d05d 1-53
+src/config/routes.ts
+  h_a5ee0ed7d5d05d 7-8
+src/components/FormPageLayout/index.tsx
+  h_a5ee0ed7d5d05d 3,44,54-58,60-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "98723c1c71cf3d14fc441228cbd5b0b1247ee50e",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
