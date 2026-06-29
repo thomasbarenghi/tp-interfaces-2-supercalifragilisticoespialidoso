@@ -1,12 +1,12 @@
-import { useNavigate } from 'react-router'
 import { useAuth } from '../../../hooks/useAuth.ts'
 import { useFollow } from '../../../hooks/useFollow.ts'
-import { ROUTES } from '../../../config/routes.ts'
 import type { User } from '../../../types/user.ts'
+import { useSWRConfig } from 'swr'
+import { API } from '../../../config/api.ts'
 
 export const useProfileHeader = (user: User) => {
   const { user: authUser, isInitialized } = useAuth()
-  const navigate = useNavigate()
+  const { mutate } = useSWRConfig()
 
   const isOwnProfile = authUser?.id === user.id || authUser?._id === user._id
   const authId = authUser?.id || authUser?._id
@@ -25,7 +25,7 @@ export const useProfileHeader = (user: User) => {
     follow()
   }
 
-  const handleEditProfile = () => navigate(ROUTES.PROFILE_EDIT)
+  const handleEditProfile = () => mutate(API.USER_BY_NICKNAME(user.nickName))
 
   return {
     isInitialized,

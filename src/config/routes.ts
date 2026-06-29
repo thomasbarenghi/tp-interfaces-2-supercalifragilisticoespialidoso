@@ -4,6 +4,8 @@ export const ROUTES = {
   POST: (postId: string) => `/post/${postId}`,
   POST_EDIT: (postId: string) => `/post/${postId}/edit`,
   PROFILE: (userId: string) => `/profile/${userId}`,
+  OWN_PROFILE: `/profile`,
+
   PROFILE_EDIT: '/profile/edit',
   POST_CREATE: '/post/create',
 } as const

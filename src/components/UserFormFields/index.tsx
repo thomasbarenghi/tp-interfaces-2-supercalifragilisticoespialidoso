@@ -18,21 +18,24 @@ const UserFormFields = ({
   onProfileImageChange,
 }: ProfileFormFieldsProps) => (
   <>
-    <div className="flex flex-col gap-1">
-      <Label>Foto de perfil</Label>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => onProfileImageChange(e.target.files?.[0] ?? null)}
-        className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm file:mr-3 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-red-600 hover:file:bg-red-100"
-      />
+    <div className="flex flex-row gap-3 items-center">
       {profileImagePreview && (
         <img
           src={profileImagePreview}
           alt="Vista previa"
-          className="mt-2 h-20 w-20 rounded-full object-cover border border-gray-200"
+          className="mt-2 h-20 w-20 aspect-square rounded-full object-cover border border-gray-200"
         />
       )}
+      <div className="flex flex-col gap-1 w-full">
+        <Label>Foto de perfil</Label>
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => onProfileImageChange(e.target.files?.[0] ?? null)}
+          className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm file:mr-3 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-red-600 hover:file:bg-red-100"
+        />
+      </div>
     </div>
 
     <div className="flex flex-col gap-1">

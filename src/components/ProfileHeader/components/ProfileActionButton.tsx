@@ -1,4 +1,5 @@
 import { Button } from '@heroui/react'
+import EditProfileModal from '../../../pages/profile/EditProfileModal.tsx'
 
 interface ProfileActionButtonProps {
   isOwnProfile: boolean
@@ -16,11 +17,7 @@ const ProfileActionButton = ({
   onToggleFollow,
 }: ProfileActionButtonProps) => {
   if (isOwnProfile) {
-    return (
-      <Button variant="outline" onClick={onEditProfile}>
-        Editar perfil
-      </Button>
-    )
+    return <EditProfileModal triggerLabel="Editar perfil" onSuccess={onEditProfile} />
   }
 
   return (

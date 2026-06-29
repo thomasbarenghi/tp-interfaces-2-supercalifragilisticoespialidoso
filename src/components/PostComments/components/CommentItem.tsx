@@ -32,7 +32,10 @@ const CommentItem = ({ comment, isOwn, onEdit, onDelete }: CommentItemProps) => 
       </Avatar>
 
       <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-        <Link href={ROUTES.PROFILE(comment.userId.nickName)} className="hover:no-underline">
+        <Link
+          href={ROUTES.PROFILE(comment.userId.nickName)}
+          className="hover:no-underline no-underline"
+        >
           <span className="text-sm font-semibold hover:no-underline">{comment.userId.name}</span>
         </Link>
         {editing ? (
@@ -44,10 +47,16 @@ const CommentItem = ({ comment, isOwn, onEdit, onDelete }: CommentItemProps) => 
               onChange={(e) => setEditText(e.target.value)}
             />
             <div className="flex gap-2">
-              <button className="text-xs font-medium text-primary" onClick={handleSave}>
+              <button
+                className="text-xs font-medium text-primary cursor-pointer"
+                onClick={handleSave}
+              >
                 Guardar
               </button>
-              <button className="text-xs text-foreground/50" onClick={() => setEditing(false)}>
+              <button
+                className="text-xs text-foreground/50 cursor-pointer"
+                onClick={() => setEditing(false)}
+              >
                 Cancelar
               </button>
             </div>

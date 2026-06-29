@@ -10,7 +10,7 @@ const UserList = ({ users }: { users: FollowUser[] }) => {
   return (
     <div className="flex max-h-80 flex-col gap-3 overflow-y-auto">
       {users.map((user) => (
-        <Link href={ROUTES.PROFILE(user.nickName)} className="hover:no-underline">
+        <Link href={ROUTES.PROFILE(user.nickName)} className="hover:no-underline no-underline">
           <div className="flex items-center gap-2 cursor-pointer rounded-full">
             <Avatar size="lg">
               <Avatar.Image src={user?.profileImage} alt={user?.name} className="object-cover" />

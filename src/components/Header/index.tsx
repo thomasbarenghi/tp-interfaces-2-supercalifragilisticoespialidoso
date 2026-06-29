@@ -7,11 +7,11 @@ import MobileMenu from '../MobileMenu'
 import { ROUTES } from '../../config/routes'
 import UserMenu from '../UserMenu'
 import { useAuth } from '../../hooks/useAuth.ts'
+import CreatePostModal from './CreatePostModal'
 
 const NAV_ITEMS = [
-  { text: 'Feed', icon: false, underline: false, href: ROUTES.HOME },
-  { text: 'Contacto', icon: false, underline: false, href: ROUTES.CONTACT },
-  { text: 'Crear publicacion', icon: true, underline: true, href: ROUTES.POST_CREATE },
+  { text: 'Feed', underline: false, href: ROUTES.HOME },
+  { text: 'Contacto', underline: false, href: ROUTES.CONTACT },
 ]
 
 const Header = () => {
@@ -26,7 +26,8 @@ const Header = () => {
             <Link href={ROUTES.HOME} className="no-underline text-foreground">
               <Logo />
             </Link>
-            <ul className="hidden xl:flex px-10 gap-6">
+
+            <ul className="hidden xl:flex px-10 gap-6 items-center">
               {NAV_ITEMS.map((item) => (
                 <li key={item.text}>
                   <Link
@@ -39,10 +40,15 @@ const Header = () => {
                     href={item.href}
                   >
                     {item.text}
-                    {item.icon && <Link.Icon className="text-(--accent)" />}
                   </Link>
                 </li>
               ))}
+
+              {isAuthenticated && (
+                <li>
+                  <CreatePostModal triggerLabel="Crear publicación" />
+                </li>
+              )}
             </ul>
           </div>
 
@@ -66,12 +72,17 @@ const Header = () => {
               key={item.text}
               href={item.href}
               underline={item.underline}
-              icon={item.icon}
               onPress={() => setMenuOpen(false)}
             >
               {item.text}
             </MobileMenu.NavItem>
           ))}
+
+          {isAuthenticated && (
+            <div onClick={() => setMenuOpen(false)} className="px-4 py-2">
+              <CreatePostModal triggerLabel="Crear publicación" />
+            </div>
+          )}
         </MobileMenu.Nav>
       </MobileMenu>
     </>
