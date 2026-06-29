@@ -1,0 +1,32 @@
+src/components/Header/CreatePostModal.tsx
+  s_327173af94a49b::t_16a58d4bd2da07 48,50
+  s_327173af94a49b::t_8e9cde13d3cfd9 4
+  s_327173af94a49b::t_ab853792c2578d 20
+src/hooks/usePost.ts
+  s_327173af94a49b::t_6cf043345dd316 1,5-7,9-53,59-66
+src/pages/post-detail/EditPostModal.tsx
+  s_327173af94a49b::t_8352c764f3676e 30
+  s_327173af94a49b::t_921a46bb2332f1 60,62
+  s_327173af94a49b::t_c35ca64aaa906a 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "e4e1e2599b9c4a63d917036ffffe3eee25f73884",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_327173af94a49b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fdfe8d9e-a137-4b69-92e2-29e77d4005f2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
