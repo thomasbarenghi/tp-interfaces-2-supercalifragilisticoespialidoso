@@ -2,10 +2,12 @@ import useSWR from 'swr'
 import { API } from '../config/api'
 import { fetcher } from '../lib/fetcher'
 import type { User } from '../types/user.ts'
+import { useAuth } from './useAuth.ts'
 
 export const useUser = (nickName?: string) => {
   const resolvedNickName = nickName
-  const endpoint = `${API.USER_BY_NICKNAME(resolvedNickName ?? '')}`
+  const { user: loggedUser } = useAuth()
+  const endpoint = `${API.USER_BY_NICKNAME(resolvedNickName ?? loggedUser?.nickName ?? '')}`
 
   const { data, error, isLoading } = useSWR<User>(endpoint, fetcher)
 
