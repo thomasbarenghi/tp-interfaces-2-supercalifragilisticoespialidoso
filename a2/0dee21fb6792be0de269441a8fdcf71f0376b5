@@ -1,0 +1,20 @@
+src/pages/edit-post/index.tsx
+  h_a5ee0ed7d5d05d 1,20,22-28,30,32-33,35-42,48-49,63,74
+src/components/FormPageLayout/index.tsx
+  h_a5ee0ed7d5d05d 40
+src/components/PostFormFields/index.tsx
+  h_a5ee0ed7d5d05d 8,16,28-34
+src/pages/create-post/index.tsx
+  h_a5ee0ed7d5d05d 1,13,16-23,25-29,34,41,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "a20dee21fb6792be0de269441a8fdcf71f0376b5",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
