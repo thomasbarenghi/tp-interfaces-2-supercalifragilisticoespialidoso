@@ -1,0 +1,26 @@
+src/components/Logo/index.tsx
+  h_a5ee0ed7d5d05d 5-8,11
+src/components/PostCard/index.tsx
+  h_a5ee0ed7d5d05d 5,29,38
+src/components/PostComments/index.tsx
+  h_a5ee0ed7d5d05d 6,15-16,26-29,50-51
+src/components/PostTags/index.tsx
+  h_a5ee0ed7d5d05d 2,14
+src/components/PostComments/CommentItem.tsx
+  h_a5ee0ed7d5d05d 2,4,35-37
+src/components/PostComments/CommentForm.tsx
+  h_a5ee0ed7d5d05d 22
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 2,36,49,69-71,75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "294b122f1b70af3d32917af602717da362acaca6",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
