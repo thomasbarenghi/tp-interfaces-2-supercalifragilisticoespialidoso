@@ -30,5 +30,18 @@ export const useDarkMode = () => {
     }
   }, [dark])
 
-  return { dark, toggle: () => setDark((v) => !v) }
+  const toggle = () => {
+    console.log('[useDarkMode] Toggle presionado')
+    console.log('[useDarkMode] Estado actual:', dark)
+
+    setDark((prev) => {
+      const next = !prev
+      console.log('[useDarkMode] Cambiando de', prev, 'a', next)
+      return next
+    })
+  }
+
+  console.log('[useDarkMode] Render. Valor actual:', dark)
+
+  return { dark, toggle }
 }
