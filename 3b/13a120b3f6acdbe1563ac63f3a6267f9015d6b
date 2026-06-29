@@ -1,0 +1,34 @@
+src/config/api.ts
+  h_a5ee0ed7d5d05d 6
+src/pages/contact/index.tsx
+  h_a5ee0ed7d5d05d 21
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 52
+src/components/UserMenu/index.tsx
+  h_a5ee0ed7d5d05d 32
+src/components/ProfileHeader/index.tsx
+  h_a5ee0ed7d5d05d 19-20
+src/hooks/useUpdateProfile.ts
+  h_a5ee0ed7d5d05d 20,28
+src/components/PostGrid/index.tsx
+  h_a5ee0ed7d5d05d 13
+src/hooks/useFollow.ts
+  h_a5ee0ed7d5d05d 7-8,30
+src/components/PostCard/index.tsx
+  h_a5ee0ed7d5d05d 31
+src/pages/edit-user/index.tsx
+  h_a5ee0ed7d5d05d 43
+src/hooks/useUser.ts
+  h_a5ee0ed7d5d05d 9-10,16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "3b13a120b3f6acdbe1563ac63f3a6267f9015d6b",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
