@@ -59,14 +59,11 @@ const CommentItem = ({ comment, isOwn, onEdit, onDelete }: CommentItemProps) => 
 
       {isOwn && !editing && (
         <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
-          <button
-            className="text-xs text-foreground/50 hover:text-foreground"
-            onClick={() => setEditing(true)}
-          >
+          <button className="text-xs cursor-pointer" onClick={() => setEditing(true)}>
             Editar
           </button>
           <button
-            className="text-xs text-red-400 hover:text-red-600"
+            className="text-xs text-accent cursor-pointer"
             onClick={() => onDelete(comment._id)}
           >
             Eliminar

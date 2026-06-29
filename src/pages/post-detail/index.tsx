@@ -9,6 +9,7 @@ import PostComments from '../../components/PostComments'
 import PostDetailSkeleton from './PostDetailSkeleton'
 import { ROUTES } from '../../config/routes.ts'
 import { formatRelativeDate } from '../../utils/format.ts'
+import PostTagsModal from './PostTagsModal.tsx'
 
 const PostDetail = () => {
   usePageTitle('Publicación')
@@ -66,13 +67,16 @@ const PostDetail = () => {
             </button>
 
             {isAuthor && (
-              <Button
-                variant="outline"
-                className="px-6 font-medium"
-                onClick={() => navigate(ROUTES.POST_EDIT(id!))}
-              >
-                Editar
-              </Button>
+              <div className="flex gap-2">
+                <PostTagsModal postId={post._id} postTags={post.tags ?? []} />
+                <Button
+                  variant="outline"
+                  className="font-medium"
+                  onClick={() => navigate(ROUTES.POST_EDIT(id!))}
+                >
+                  Editar
+                </Button>
+              </div>
             )}
           </div>
 

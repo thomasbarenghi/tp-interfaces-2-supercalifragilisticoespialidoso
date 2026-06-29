@@ -1,7 +1,8 @@
 const BASE = import.meta.env.VITE_API_URL ?? ''
 
 export const API = {
-  USER_POSTS_BY_ID: (userId: string) => `${BASE}/users/${userId}/posts`,
+  POST_TAG: (postId: string, tagId: string) => `${BASE}/posts/${postId}/tags/${tagId}`,
+  TAGS: `${BASE}/tags`,
   USER_BY_ID: (userId: string) => `${BASE}/users/${userId}`,
   USER_BY_NICKNAME: (nickname: string) => `${BASE}/users/nickname/${nickname}`,
   POST_BY_ID: (postId: string) => `${BASE}/posts/${postId}`,
