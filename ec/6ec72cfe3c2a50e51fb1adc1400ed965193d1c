@@ -1,0 +1,18 @@
+src/components/UserMenu/index.tsx
+  h_a5ee0ed7d5d05d 5,8-9
+src/components/PostGrid/index.tsx
+  h_a5ee0ed7d5d05d 16
+src/components/Header/index.tsx
+  h_a5ee0ed7d5d05d 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "ec6ec72cfe3c2a50e51fb1adc1400ed965193d1c",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
