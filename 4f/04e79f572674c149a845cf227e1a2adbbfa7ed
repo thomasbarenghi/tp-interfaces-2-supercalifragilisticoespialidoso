@@ -1,0 +1,14 @@
+package.json
+  h_a5ee0ed7d5d05d 27-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "4f04e79f572674c149a845cf227e1a2adbbfa7ed",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
