@@ -1,0 +1,14 @@
+src/hooks/useDarkMode.ts
+  h_a5ee0ed7d5d05d 4-8,11-12,15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "8f062d09bd974d678102d2b0e560cfaadb73ca61",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
