@@ -1,37 +1,33 @@
 import { useEffect, useState } from 'react'
 
+const DARK_MODE_STORAGE_KEY = 'dark-mode'
+
+const getInitialDarkMode = () => {
+  if (typeof window === 'undefined') return false
+
+  try {
+    const stored = window.localStorage.getItem(DARK_MODE_STORAGE_KEY)
+    if (stored !== null) return stored === 'true'
+  } catch {
+    // If storage is unavailable, fall back to the system preference.
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+}
+
 export const useDarkMode = () => {
-  const [dark, setDark] = useState(() => {
-    console.log('[useDarkMode] Inicializando hook')
-
-    const stored = localStorage.getItem('dark-mode')
-    console.log('[useDarkMode] Valor en localStorage:', stored)
-
-    if (stored !== null) {
-      const parsed = stored === 'true'
-      console.log('[useDarkMode] Usando valor de localStorage:', parsed)
-      return parsed
-    }
-
-    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-    console.log('[useDarkMode] No hay valor guardado. Preferencia del sistema:', systemPreference)
-
-    return systemPreference
-  })
+  const [dark, setDark] = useState(getInitialDarkMode)
 
   useEffect(() => {
-    console.log('[useDarkMode] useEffect ejecutado')
-    console.log('[useDarkMode] Estado dark:', dark)
+    const root = document.documentElement
+    root.classList.toggle('dark', dark)
+    root.dataset.theme = dark ? 'dark' : 'light'
 
-    document.documentElement.classList.toggle('dark', dark)
-    console.log(
-      '[useDarkMode] Clase "dark" presente:',
-      document.documentElement.classList.contains('dark'),
-    )
-
-    localStorage.setItem('dark-mode', String(dark))
-    console.log('[useDarkMode] Guardado en localStorage:', localStorage.getItem('dark-mode'))
+    try {
+      window.localStorage.setItem(DARK_MODE_STORAGE_KEY, String(dark))
+    } catch {
+      // Ignore storage write failures and keep the theme applied in memory.
+    }
   }, [dark])
 
   const toggle = () => {

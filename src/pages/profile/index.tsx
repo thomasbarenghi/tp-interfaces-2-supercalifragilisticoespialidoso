@@ -11,7 +11,10 @@ const Profile = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id?: string }>()
   const { user, isLoading } = useUser(id)
-  if (!user && !isLoading) return navigate(ROUTES.HOME)
+  if (!user && !isLoading) {
+    navigate(ROUTES.HOME)
+    return null
+  }
   return (
     <Main>
       {user && (
