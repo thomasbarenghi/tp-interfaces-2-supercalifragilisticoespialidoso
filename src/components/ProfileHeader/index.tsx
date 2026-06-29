@@ -1,73 +1,44 @@
-import { Button } from '@heroui/react'
-import { useNavigate } from 'react-router'
 import type { User } from '../../types/user'
-import { useAuth } from '../../hooks/useAuth'
-import { useFollow } from '../../hooks/useFollow'
-import { ROUTES } from '../../config/routes'
+import ProfileInfo from './components/ProfileInfo.tsx'
+import ProfileStats from './components/ProfileStats.tsx'
+import ProfileActionButton from './components/ProfileActionButton.tsx'
+import { useProfileHeader } from './hooks/useProfileHeader.ts'
 
 interface ProfileHeaderProps {
   user: User
 }
 
 const ProfileHeader = ({ user }: ProfileHeaderProps) => {
-  const { user: authUser, isInitialized } = useAuth()
-  const navigate = useNavigate()
-  const isOwnProfile = authUser?.id === user.id || authUser?._id === user._id
-  const authId = authUser?.id || authUser?._id
-  const isFollowing =
-    !!authId && (user.followers ?? []).some((f) => f._id === authId || f.id === authId)
-  const { follow, unfollow, isLoading } = useFollow(user._id || user.id, authId)
-
-  const handleFollowToggle = () => {
-    if (isFollowing) unfollow()
-    else follow()
-  }
+  const {
+    isInitialized,
+    isOwnProfile,
+    isFollowing,
+    isLoading,
+    handleFollowToggle,
+    handleEditProfile,
+  } = useProfileHeader(user)
 
   return (
     <div className="flex justify-center px-4">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl w-full">
+      <div className="flex w-full max-w-4xl flex-col items-center justify-center gap-8 md:flex-row">
         <img
           src={user.profileImage}
           alt={user.name}
-          className="w-48 h-48 rounded-full object-cover shrink-0"
+          className="h-48 w-48 rounded-full object-cover"
         />
 
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-          <div className="flex flex-col gap-2">
-            <h1 className="text-3xl font-semibold">{user.name}</h1>
-            <p>{user.bio}</p>
-          </div>
-
-          <div className="flex gap-6 text-sm">
-            <span>
-              <strong>{user.followers?.length ?? 0}</strong> seguidores
-            </span>
-            <span>
-              <strong>{user.following?.length ?? 0}</strong> siguiendo
-            </span>
-          </div>
+        <div className="flex flex-col items-center gap-4 md:items-start">
+          <ProfileInfo name={user.name} bio={user.bio} />
+          <ProfileStats followers={user.followers ?? []} following={user.following ?? []} />
 
           {isInitialized && (
-            <div className="flex flex-wrap gap-2">
-              {isOwnProfile ? (
-                <Button
-                  variant="outline"
-                  className="px-6 font-medium"
-                  onClick={() => navigate(ROUTES.PROFILE_EDIT)}
-                >
-                  Editar perfil
-                </Button>
-              ) : (
-                <Button
-                  variant={isFollowing ? 'outline' : 'primary'}
-                  className="px-6 font-medium"
-                  isDisabled={isLoading}
-                  onClick={handleFollowToggle}
-                >
-                  {isFollowing ? 'Dejar de seguir' : 'Seguir'}
-                </Button>
-              )}
-            </div>
+            <ProfileActionButton
+              isOwnProfile={isOwnProfile}
+              isFollowing={isFollowing}
+              isLoading={isLoading}
+              onEditProfile={handleEditProfile}
+              onToggleFollow={handleFollowToggle}
+            />
           )}
         </div>
       </div>

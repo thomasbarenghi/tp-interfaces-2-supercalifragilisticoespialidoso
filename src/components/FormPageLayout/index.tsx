@@ -37,7 +37,7 @@ const FormPageLayout = ({
             <Button
               type="submit"
               className="w-full bg-red-500 text-white font-semibold py-3 rounded-full"
-              disabled={isSubmitting}
+              isDisabled={isSubmitting}
             >
               {isSubmitting ? 'Guardando...' : submitLabel}
             </Button>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Avatar } from '@heroui/react'
+import { Avatar, Button } from '@heroui/react'
 
 interface CommentFormProps {
   authorName: string
@@ -19,7 +19,7 @@ const CommentForm = ({ authorName, authorImage, isSubmitting, onSubmit }: Commen
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 pt-2 border-t border-current/10">
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <Avatar size="sm">
         <Avatar.Image src={authorImage} alt={authorName} className="object-cover" />
         <Avatar.Fallback>{authorName?.[0]}</Avatar.Fallback>
@@ -31,13 +31,9 @@ const CommentForm = ({ authorName, authorImage, isSubmitting, onSubmit }: Commen
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button
-          type="submit"
-          disabled={!text.trim() || isSubmitting}
-          className="text-sm font-semibold text-primary disabled:opacity-40"
-        >
+        <Button isDisabled={!text.trim() || isSubmitting} variant="outline" type="submit">
           Publicar
-        </button>
+        </Button>
       </div>
     </form>
   )

@@ -1,15 +1,15 @@
 import { useNavigate, useParams } from 'react-router'
-import { Avatar } from '@heroui/react'
+import { Avatar, Button, Chip } from '@heroui/react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { usePost } from '../../hooks/usePost.ts'
 import { useAuth } from '../../hooks/useAuth.ts'
 import Main from '../../components/Main'
 import TwoColumnLayout from '../../components/TwoColumnLayout'
 import PostComments from '../../components/PostComments'
-import PostTags from '../../components/PostTags'
 import PostDetailSkeleton from './PostDetailSkeleton'
 import { ROUTES } from '../../config/routes.ts'
 import { formatRelativeDate } from '../../utils/format.ts'
+import PostTagsModal from './PostTagsModal.tsx'
 
 const PostDetail = () => {
   usePageTitle('Publicación')
@@ -24,8 +24,9 @@ const PostDetail = () => {
         <PostDetailSkeleton />
       </Main>
     )
+
   if (!post) {
-    navigate(ROUTES.HOME, { replace: true })
+    navigate(ROUTES.HOME)
     return null
   }
 
@@ -33,7 +34,7 @@ const PostDetail = () => {
   const isAuthor = user?._id === author._id
 
   return (
-    <Main>
+    <Main contentClassName="max-w-7xl">
       <TwoColumnLayout gap="xl">
         <TwoColumnLayout.Main>
           <div className="rounded-2xl overflow-hidden">
@@ -46,10 +47,10 @@ const PostDetail = () => {
         </TwoColumnLayout.Main>
 
         <TwoColumnLayout.Sidebar>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-10">
             <button
               className="flex items-center gap-3 text-left w-fit cursor-pointer"
-              onClick={() => navigate(ROUTES.PROFILE(author._id))}
+              onClick={() => navigate(ROUTES.PROFILE(author.nickName))}
             >
               <Avatar size="md">
                 <Avatar.Image
@@ -66,18 +67,28 @@ const PostDetail = () => {
             </button>
 
             {isAuthor && (
-              <button
-                className="text-sm text-red-500 font-semibold border border-red-500 rounded-full px-4 py-1 hover:bg-red-50 transition-colors cursor-pointer"
-                onClick={() => navigate(ROUTES.POST_EDIT(id!))}
-              >
-                Editar
-              </button>
+              <div className="flex gap-2">
+                <PostTagsModal postId={post._id} postTags={post.tags ?? []} />
+                <Button
+                  variant="outline"
+                  className="font-medium"
+                  onClick={() => navigate(ROUTES.POST_EDIT(id!))}
+                >
+                  Editar
+                </Button>
+              </div>
             )}
           </div>
 
           <p className="text-base leading-relaxed">{post.description}</p>
 
-          <PostTags tags={post.tags} />
+          {Array.isArray(post.tags) && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <Chip key={tag._id}>{tag.name}</Chip>
+              ))}
+            </div>
+          )}
 
           <PostComments postId={post._id} comments={post.comments ?? []} />
         </TwoColumnLayout.Sidebar>

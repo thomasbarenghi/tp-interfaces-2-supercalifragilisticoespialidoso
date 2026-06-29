@@ -5,7 +5,7 @@ interface PostFormFieldsProps {
   onDescriptionChange: (value: string) => void
   onImageChange: (file: File | null) => void
   imageRequired?: boolean
-  imageHint?: string
+  imagePreview?: string | null
 }
 
 const PostFormFields = ({
@@ -13,7 +13,7 @@ const PostFormFields = ({
   onDescriptionChange,
   onImageChange,
   imageRequired = false,
-  imageHint,
+  imagePreview,
 }: PostFormFieldsProps) => (
   <>
     <div className="flex flex-col gap-1">
@@ -25,7 +25,13 @@ const PostFormFields = ({
         onChange={(e) => onImageChange(e.target.files?.[0] ?? null)}
         className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm file:mr-3 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-red-600 hover:file:bg-red-100"
       />
-      {imageHint && <p className="text-sm text-gray-400">{imageHint}</p>}
+      {imagePreview && (
+        <img
+          src={imagePreview}
+          alt="Vista previa"
+          className="mt-2 h-20 w-20 rounded-full object-cover border border-gray-200"
+        />
+      )}
     </div>
 
     <div className="flex flex-col gap-1">

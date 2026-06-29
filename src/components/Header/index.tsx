@@ -9,7 +9,7 @@ import UserMenu from '../UserMenu'
 
 const NAV_ITEMS = [
   { text: 'Feed', icon: false, underline: false, href: ROUTES.HOME },
-  { text: 'Sobre nosotros', icon: false, underline: false, href: ROUTES.CONTACT },
+  { text: 'Contacto', icon: false, underline: false, href: ROUTES.CONTACT },
   { text: 'Crear publicacion', icon: true, underline: true, href: ROUTES.POST_CREATE },
 ]
 

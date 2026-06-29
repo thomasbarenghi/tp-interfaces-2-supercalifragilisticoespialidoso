@@ -1,8 +1,4 @@
-export interface PostTag {
-  _id: string
-  id: string
-  name: string
-}
+import type { Tag } from './tag.ts'
 
 export interface PostImage {
   _id: string
@@ -35,7 +31,7 @@ export interface Post {
   description: string
   author: PostAuthor
   images: PostImage[]
-  tags: PostTag[]
+  tags: Tag[]
   comments: PostComment[]
   createdAt: string
   updatedAt: string
