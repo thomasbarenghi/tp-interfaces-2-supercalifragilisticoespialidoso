@@ -1,0 +1,34 @@
+src/components/PostGrid/index.tsx
+  h_a5ee0ed7d5d05d 2-3,11,13-36,38,41
+src/components/ProfileHeader/index.tsx
+  h_a5ee0ed7d5d05d 2-5,13-19,23,27,30-32,35-41
+src/components/ProfileHeader/components/ConnectionsModal.tsx
+  h_a5ee0ed7d5d05d 1-39
+src/components/PostComments/index.tsx
+  h_a5ee0ed7d5d05d 4-5
+src/types/user.ts
+  h_a5ee0ed7d5d05d 8
+src/components/Footer/index.tsx
+  h_a5ee0ed7d5d05d 10
+src/components/ProfileHeader/components/UserList.tsx
+  h_a5ee0ed7d5d05d 1-27
+src/components/ProfileHeader/hooks/useProfileHeader.ts
+  h_a5ee0ed7d5d05d 1-38
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 2,80-83
+src/components/PostComments/components/CommentItem.tsx
+  h_a5ee0ed7d5d05d 1-80
+src/components/ProfileHeader/components/ProfileStats.tsx
+  h_a5ee0ed7d5d05d 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "111534db12f350decad8775401041232a43150e7",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
