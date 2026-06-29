@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Button } from '@heroui/react'
-import { useEditPost } from '../../hooks/useEditPost.ts'
+import { usePost } from '../../hooks/usePost.ts'
 import PostFormFields from '../../components/PostFormFields'
-import { useDeletePost } from '../../hooks/useDeletePost.ts'
 import { ROUTES } from '../../config/routes.ts'
 import type { Tag } from '../../types/tag.ts'
 import FormModalShell from '../../components/FormModalShell'
@@ -28,8 +27,7 @@ const EditPostModal = ({
 }: EditPostModalProps) => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
-  const { editPost, isSubmitting, error } = useEditPost(postId)
-  const { deletePost, isSubmitting: isDeleting } = useDeletePost()
+  const { editPost, isEditing, editError, deletePost, isDeleting } = usePost(postId)
 
   const { textValues, setTextField, image, setImage, imagePreview } = useModalImageForm({
     isOpen,
@@ -59,9 +57,9 @@ const EditPostModal = ({
       isOpen={isOpen}
       onOpenChange={setIsOpen}
       title="Editar publicación"
-      error={error}
+      error={editError}
       onSubmit={handleSubmit}
-      isSubmitting={isSubmitting}
+      isSubmitting={isEditing}
       submitLabel="Guardar cambios"
       secondaryAction={
         <Button type="button" variant="outline" onClick={handleDelete} isPending={isDeleting}>
