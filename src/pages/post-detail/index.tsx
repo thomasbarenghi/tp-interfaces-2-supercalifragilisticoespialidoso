@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from 'react-router'
-import { Avatar, Button } from '@heroui/react'
+import { Avatar, Button, Chip } from '@heroui/react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { usePost } from '../../hooks/usePost.ts'
 import { useAuth } from '../../hooks/useAuth.ts'
 import Main from '../../components/Main'
 import TwoColumnLayout from '../../components/TwoColumnLayout'
 import PostComments from '../../components/PostComments'
-import PostTags from '../../components/PostTags'
 import PostDetailSkeleton from './PostDetailSkeleton'
 import { ROUTES } from '../../config/routes.ts'
 import { formatRelativeDate } from '../../utils/format.ts'
@@ -78,7 +77,10 @@ const PostDetail = () => {
 
           <p className="text-base leading-relaxed">{post.description}</p>
 
-          <PostTags tags={post.tags} />
+          <div className="flex flex-wrap gap-2">
+            {Array.isArray(post.tags) &&
+              post.tags.map((tag) => <Chip key={tag._id}>{tag.name}</Chip>)}
+          </div>
 
           <PostComments postId={post._id} comments={post.comments ?? []} />
         </TwoColumnLayout.Sidebar>

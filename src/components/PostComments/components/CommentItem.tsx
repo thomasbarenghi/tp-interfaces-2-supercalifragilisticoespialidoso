@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Avatar, Link } from '@heroui/react'
-import type { PostComment } from '../../types/post'
-import { ROUTES } from '../../config/routes.ts'
+import type { PostComment } from '../../../types/post.ts'
+import { ROUTES } from '../../../config/routes.ts'
 
 interface CommentItemProps {
   comment: PostComment

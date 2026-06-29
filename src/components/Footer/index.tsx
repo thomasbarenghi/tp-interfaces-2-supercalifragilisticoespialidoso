@@ -7,7 +7,7 @@ const Footer = () => {
   const { dark, toggle } = useDarkMode()
   return (
     <footer
-      className="mt-auto bg-(--background) text-(--foreground) dark:border-t dark:border-current/5"
+      className="mt-auto bg-(--background) text-(--foreground) min-h-[350px] dark:border-t dark:border-current/5"
       data-theme="dark"
     >
       <div className="container px-6 md:px-10 py-16 flex flex-col sm:flex-row justify-between gap-10">

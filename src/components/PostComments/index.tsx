@@ -1,8 +1,8 @@
 import type { PostComment } from '../../types/post'
 import { useAuth } from '../../hooks/useAuth'
 import { useComments } from '../../hooks/useComments'
-import CommentItem from './CommentItem'
-import CommentForm from './CommentForm'
+import CommentItem from './components/CommentItem.tsx'
+import CommentForm from './components/CommentForm.tsx'
 import { useUser } from '../../hooks/useUser.ts'
 
 interface PostCommentsProps {
