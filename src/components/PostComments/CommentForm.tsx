@@ -19,7 +19,7 @@ const CommentForm = ({ authorName, authorImage, isSubmitting, onSubmit }: Commen
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 pt-2 border-t border-current/10">
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <Avatar size="sm">
         <Avatar.Image src={authorImage} alt={authorName} className="object-cover" />
         <Avatar.Fallback>{authorName?.[0]}</Avatar.Fallback>

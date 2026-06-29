@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router'
-import { Avatar } from '@heroui/react'
+import { Avatar, Button } from '@heroui/react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { usePost } from '../../hooks/usePost.ts'
 import { useAuth } from '../../hooks/useAuth.ts'
@@ -33,7 +33,7 @@ const PostDetail = () => {
   const isAuthor = user?._id === author._id
 
   return (
-    <Main>
+    <Main contentClassName="max-w-7xl">
       <TwoColumnLayout gap="xl">
         <TwoColumnLayout.Main>
           <div className="rounded-2xl overflow-hidden">
@@ -46,7 +46,7 @@ const PostDetail = () => {
         </TwoColumnLayout.Main>
 
         <TwoColumnLayout.Sidebar>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-10">
             <button
               className="flex items-center gap-3 text-left w-fit cursor-pointer"
               onClick={() => navigate(ROUTES.PROFILE(author.nickName))}
@@ -66,12 +66,13 @@ const PostDetail = () => {
             </button>
 
             {isAuthor && (
-              <button
-                className="text-sm text-red-500 font-semibold border border-red-500 rounded-full px-4 py-1 hover:bg-red-50 transition-colors cursor-pointer"
+              <Button
+                variant="outline"
+                className="px-6 font-medium"
                 onClick={() => navigate(ROUTES.POST_EDIT(id!))}
               >
                 Editar
-              </button>
+              </Button>
             )}
           </div>
 

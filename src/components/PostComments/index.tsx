@@ -3,6 +3,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { useComments } from '../../hooks/useComments'
 import CommentItem from './CommentItem'
 import CommentForm from './CommentForm'
+import { useUser } from '../../hooks/useUser.ts'
 
 interface PostCommentsProps {
   postId: string
@@ -11,6 +12,8 @@ interface PostCommentsProps {
 
 const PostComments = ({ postId, comments }: PostCommentsProps) => {
   const { user: authUser } = useAuth()
+  const { user } = useUser()
+
   const { addComment, editComment, deleteComment, isSubmitting } = useComments(postId)
 
   const handleAdd = (text: string) => {
@@ -20,10 +23,10 @@ const PostComments = ({ postId, comments }: PostCommentsProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 pt-2 border-t border-current/10">
-      <h3 className="font-semibold text-sm text-foreground/60 uppercase tracking-wide">
-        Comentarios ({comments.length})
-      </h3>
+    <div className="flex flex-col gap-4">
+      {comments.length > 0 && (
+        <h3 className="font-semibold text-sm">Comentarios ({comments.length})</h3>
+      )}
 
       {comments.map((comment) => {
         const isOwn =
@@ -44,8 +47,8 @@ const PostComments = ({ postId, comments }: PostCommentsProps) => {
 
       {authUser && (
         <CommentForm
-          authorName={authUser.name}
-          authorImage={authUser.profileImage}
+          authorName={user?.name ?? authUser.name}
+          authorImage={user?.profileImage ?? authUser.profileImage}
           isSubmitting={isSubmitting}
           onSubmit={handleAdd}
         />

@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Avatar } from '@heroui/react'
+import { Avatar, Link } from '@heroui/react'
 import type { PostComment } from '../../types/post'
+import { ROUTES } from '../../config/routes.ts'
 
 interface CommentItemProps {
   comment: PostComment
@@ -31,8 +32,9 @@ const CommentItem = ({ comment, isOwn, onEdit, onDelete }: CommentItemProps) => 
       </Avatar>
 
       <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-        <span className="text-sm font-semibold">{comment.userId.name}</span>
-
+        <Link href={ROUTES.PROFILE(comment.userId.nickName)} className="hover:no-underline">
+          <span className="text-sm font-semibold hover:no-underline">{comment.userId.name}</span>
+        </Link>
         {editing ? (
           <div className="flex flex-col gap-2">
             <textarea
