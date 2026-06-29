@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { usePost } from '../../hooks/usePost.ts'
@@ -17,18 +17,36 @@ const EditPost = () => {
 
   const [description, setDescription] = useState('')
   const [image, setImage] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [initialized, setInitialized] = useState(false)
-  if (post && !initialized) {
-    setDescription(post.description)
-    setInitialized(true)
-  }
 
-  if (isLoading)
+  useEffect(() => {
+    if (!post || initialized) return
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDescription(post.description ?? '')
+    setImagePreview(post.images?.[0]?.url ?? null)
+    setInitialized(true)
+  }, [post, initialized])
+
+  useEffect(() => {
+    if (!image) return
+
+    const objectUrl = URL.createObjectURL(image)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setImagePreview(objectUrl)
+
+    return () => URL.revokeObjectURL(objectUrl)
+  }, [image])
+
+  if (isLoading) {
     return (
       <Main>
         <p className="text-center py-20">Cargando...</p>
       </Main>
     )
+  }
+
   if (!post) {
     navigate(ROUTES.HOME, { replace: true })
     return null
@@ -42,7 +60,7 @@ const EditPost = () => {
 
   return (
     <FormPageLayout
-      title="Editar publicacion"
+      title="Editar publicación"
       subtitle="Porque equivocarnos no está mal"
       submitLabel="Guardar cambios"
       isSubmitting={isSubmitting}
@@ -53,7 +71,7 @@ const EditPost = () => {
         description={description}
         onDescriptionChange={setDescription}
         onImageChange={setImage}
-        imageHint="Ignora para dejar la actual"
+        imagePreview={imagePreview}
       />
     </FormPageLayout>
   )
