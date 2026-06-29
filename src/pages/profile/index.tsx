@@ -1,14 +1,17 @@
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import PostGrid from '../../components/PostGrid'
 import Main from '../../components/Main'
 import { useUser } from '../../hooks/useUser.ts'
 import ProfileHeader from '../../components/ProfileHeader'
+import { ROUTES } from '../../config/routes.ts'
 
 const Profile = () => {
   usePageTitle('Profile')
+  const navigate = useNavigate()
   const { id } = useParams<{ id?: string }>()
   const { user, isLoading } = useUser(id)
+  if (!user && !isLoading) return navigate(ROUTES.HOME)
   return (
     <Main>
       {user && (

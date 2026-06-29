@@ -23,8 +23,9 @@ const PostDetail = () => {
         <PostDetailSkeleton />
       </Main>
     )
+
   if (!post) {
-    navigate(ROUTES.HOME, { replace: true })
+    navigate(ROUTES.HOME)
     return null
   }
 
