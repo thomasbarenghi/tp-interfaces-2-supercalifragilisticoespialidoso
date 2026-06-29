@@ -1,0 +1,14 @@
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 81,83,85,87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "67a449db3951cac3c726d18af0582ecd7dc9517c",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
