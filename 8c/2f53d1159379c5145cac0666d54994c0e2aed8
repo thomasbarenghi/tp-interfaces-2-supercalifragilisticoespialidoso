@@ -1,0 +1,21 @@
+src/hooks/usePost.ts
+  s_327173af94a49b::t_26d334e9a8fdcd 20-22
+src/pages/post-detail/index.tsx
+  s_327173af94a49b::t_634de42db98205 1,18,21-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "8c2f53d1159379c5145cac0666d54994c0e2aed8",
+  "prompts": {},
+  "sessions": {
+    "s_327173af94a49b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fdfe8d9e-a137-4b69-92e2-29e77d4005f2",
+        "model": "unknown"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
