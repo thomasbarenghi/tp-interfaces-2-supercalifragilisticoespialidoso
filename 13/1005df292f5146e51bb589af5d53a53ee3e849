@@ -1,0 +1,16 @@
+src/hooks/useUser.ts
+  h_a5ee0ed7d5d05d 7,9-10,16
+src/components/Header/index.tsx
+  h_a5ee0ed7d5d05d 9,19,50,54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "131005df292f5146e51bb589af5d53a53ee3e849",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
