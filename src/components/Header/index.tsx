@@ -6,6 +6,7 @@ import Logo from '../Logo'
 import MobileMenu from '../MobileMenu'
 import { ROUTES } from '../../config/routes'
 import UserMenu from '../UserMenu'
+import { useAuth } from '../../hooks/useAuth.ts'
 
 const NAV_ITEMS = [
   { text: 'Feed', icon: false, underline: false, href: ROUTES.HOME },
@@ -15,6 +16,7 @@ const NAV_ITEMS = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { isAuthenticated } = useAuth()
 
   return (
     <>
@@ -45,13 +47,11 @@ const Header = () => {
           </div>
 
           {/* Desktop: user menu */}
-          <div className="hidden xl:flex items-center gap-6">
-            <UserMenu />
-          </div>
+          <div className="hidden xl:flex items-center gap-6">{isAuthenticated && <UserMenu />}</div>
 
           {/* Mobile: user menu + hamburger */}
           <div className="flex xl:hidden items-center gap-4">
-            <UserMenu />
+            {isAuthenticated && <UserMenu />}
             <button onClick={() => setMenuOpen((o) => !o)} aria-label="Abrir menú" className="p-1">
               <Bars width={20} height={20} />
             </button>

@@ -4,16 +4,16 @@ import { fetcher } from '../lib/fetcher'
 import type { User } from '../types/user.ts'
 import { useAuth } from './useAuth'
 
-export const useUser = (id?: string) => {
+export const useUser = (nickName?: string) => {
   const { user: authUser } = useAuth()
-  const nickName = id || authUser?.nickName || '6a3c2ca0c708d8c1710c264a'
-  const endpoint = `${API.USER_BY_NICKNAME(nickName)}`
+  const resolvedNickName = nickName || authUser?.nickName
+  const endpoint = `${API.USER_BY_NICKNAME(resolvedNickName)}`
 
   const { data, error, isLoading } = useSWR<User>(endpoint, fetcher)
 
   // Si estamos pidiendo el perfil del usuario logueado, podemos usar los datos locales
   // mientras cargan los de la API (o si hay error pero tenemos algo guardado)
-  const user = nickName === authUser?.nickName ? ({ ...authUser, ...data } as User) : data
+  const user = resolvedNickName === authUser?.nickName ? ({ ...authUser, ...data } as User) : data
 
   return {
     user,
