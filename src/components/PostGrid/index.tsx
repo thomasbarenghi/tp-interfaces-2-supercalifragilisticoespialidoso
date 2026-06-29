@@ -10,7 +10,7 @@ interface Props {
 }
 
 const PostGrid = ({ posts, isLoading, skeletonCount = 8 }: Props) => (
-  <div className="grid grid-cols-1 gap-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
+  <div className="grid grid-cols-1 gap-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
     {isLoading
       ? Array.from({ length: skeletonCount }).map((_, i) => <PostCardSkeleton key={i} />)
       : posts?.length === 0

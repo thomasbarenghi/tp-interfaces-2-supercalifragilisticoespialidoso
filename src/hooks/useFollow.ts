@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { useSWRConfig } from 'swr'
 import { API } from '../config/api'
 
-export const useFollow = (viewedUserId: string, authUserId?: string) => {
+export const useFollow = (
+  viewedUserId: string,
+  viewedUserNickName: string,
+  authUserId?: string,
+) => {
   const { mutate } = useSWRConfig()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -23,7 +27,7 @@ export const useFollow = (viewedUserId: string, authUserId?: string) => {
         throw new Error('Request failed')
       }
     } finally {
-      await mutate(API.USER_BY_ID(viewedUserId))
+      await mutate(API.USER_BY_NICKNAME(viewedUserNickName))
       setIsLoading(false)
     }
   }

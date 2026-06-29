@@ -17,7 +17,7 @@ export const useUpdateProfile = () => {
     isSubmitting,
     error,
   } = useAsyncAction(async ({ name, bio, profileImage }: UpdateProfilePayload) => {
-    if (!user?._id) throw new Error('No hay usuario autenticado')
+    if (!user?.nickName) throw new Error('No hay usuario autenticado')
 
     const formData = toFormData({
       name,
@@ -25,7 +25,7 @@ export const useUpdateProfile = () => {
       profileImage,
     })
 
-    const res = await fetch(API.USER_BY_ID(user._id), {
+    const res = await fetch(API.USER_BY_ID(user.id), {
       method: 'PUT',
       body: formData,
     })

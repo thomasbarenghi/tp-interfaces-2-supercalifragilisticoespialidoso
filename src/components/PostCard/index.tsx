@@ -28,7 +28,7 @@ const PostCard = ({ post }: PostCardProps) => {
               className="hover:underline"
               onClick={(e) => {
                 e.stopPropagation()
-                navigate(ROUTES.PROFILE(author._id))
+                navigate(ROUTES.PROFILE(author.nickName))
               }}
             >
               {author.name}

@@ -29,7 +29,7 @@ const UserMenu = () => {
           <Dropdown.Item
             id="profile"
             textValue="Ver mi perfil"
-            onAction={() => navigate(ROUTES.PROFILE(user?._id ?? ''))}
+            onAction={() => navigate(ROUTES.PROFILE(user?.nickName ?? ''))}
           >
             Ver mi perfil
           </Dropdown.Item>

@@ -16,7 +16,8 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
   const authId = authUser?.id || authUser?._id
   const isFollowing =
     !!authId && (user.followers ?? []).some((f) => f._id === authId || f.id === authId)
-  const { follow, unfollow, isLoading } = useFollow(user._id || user.id, authId)
+
+  const { follow, unfollow, isLoading } = useFollow(user._id || user.id, user.nickName, authId)
 
   const handleFollowToggle = () => {
     if (isFollowing) unfollow()

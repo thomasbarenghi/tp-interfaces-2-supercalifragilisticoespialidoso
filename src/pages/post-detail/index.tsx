@@ -49,7 +49,7 @@ const PostDetail = () => {
           <div className="flex items-center justify-between">
             <button
               className="flex items-center gap-3 text-left w-fit cursor-pointer"
-              onClick={() => navigate(ROUTES.PROFILE(author._id))}
+              onClick={() => navigate(ROUTES.PROFILE(author.nickName))}
             >
               <Avatar size="md">
                 <Avatar.Image

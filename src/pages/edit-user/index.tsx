@@ -40,7 +40,7 @@ const EditProfile = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const updated = await updateProfile({ name, bio, profileImage })
-    navigate(ROUTES.PROFILE(updated._id ?? updated.id))
+    navigate(ROUTES.PROFILE(updated.nickName ?? updated.nickName))
   }
 
   return (
