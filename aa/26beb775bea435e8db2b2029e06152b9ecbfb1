@@ -1,0 +1,18 @@
+src/components/ProfileHeader/components/UserList.tsx
+  h_a5ee0ed7d5d05d 1,3,13-15,21-22,24
+src/pages/profile/index.tsx
+  h_a5ee0ed7d5d05d 1,7,11,14
+src/pages/post-detail/index.tsx
+  h_a5ee0ed7d5d05d 26,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "aa26beb775bea435e8db2b2029e06152b9ecbfb1",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
