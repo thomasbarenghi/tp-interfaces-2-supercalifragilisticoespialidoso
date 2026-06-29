@@ -78,10 +78,13 @@ const PostDetail = () => {
 
           <p className="text-base leading-relaxed">{post.description}</p>
 
-          <div className="flex flex-wrap gap-2">
-            {Array.isArray(post.tags) &&
-              post.tags.map((tag) => <Chip key={tag._id}>{tag.name}</Chip>)}
-          </div>
+          {Array.isArray(post.tags) && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <Chip key={tag._id}>{tag.name}</Chip>
+              ))}
+            </div>
+          )}
 
           <PostComments postId={post._id} comments={post.comments ?? []} />
         </TwoColumnLayout.Sidebar>
