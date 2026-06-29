@@ -2,9 +2,11 @@ import { Avatar, Dropdown } from '@heroui/react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../hooks/useAuth'
 import { ROUTES } from '../../config/routes'
+import { useUser } from '../../hooks/useUser.ts'
 
 const UserMenu = () => {
-  const { user, logout } = useAuth()
+  const { logout } = useAuth()
+  const { user } = useUser()
   const navigate = useNavigate()
 
   const handleLogout = () => {

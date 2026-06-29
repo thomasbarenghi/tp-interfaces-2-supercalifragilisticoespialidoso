@@ -9,7 +9,6 @@ const Profile = () => {
   usePageTitle('Profile')
   const { id } = useParams<{ id?: string }>()
   const { user, isLoading } = useUser(id)
-  console.log(user)
   return (
     <Main>
       {user && (
