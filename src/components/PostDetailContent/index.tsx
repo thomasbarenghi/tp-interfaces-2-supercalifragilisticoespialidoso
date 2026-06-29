@@ -4,7 +4,7 @@ import { ROUTES } from '../../config/routes.ts'
 import { formatRelativeDate } from '../../utils/format.ts'
 import PostComments from '../../components/PostComments'
 import type { Post } from '../../types/post.ts'
-import EditPostModal from '../../pages/post-detail/EditPostModal.tsx'
+import EditPostModal from '../../pages/post-detail/components/EditPostModal.tsx'
 
 type PostDetailContentProps = {
   post: Post

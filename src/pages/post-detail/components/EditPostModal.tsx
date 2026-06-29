@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Button } from '@heroui/react'
-import { usePost } from '../../hooks/usePost.ts'
-import PostFormFields from '../../components/PostFormFields'
-import { ROUTES } from '../../config/routes.ts'
-import type { Tag } from '../../types/tag.ts'
-import FormModalShell from '../../components/FormModalShell'
-import { useModalImageForm } from '../../hooks/useModalImageForm'
+import { usePost } from '../../../hooks/usePost.ts'
+import PostFormFields from '../../../components/PostFormFields'
+import { ROUTES } from '../../../config/routes.ts'
+import type { Tag } from '../../../types/tag.ts'
+import FormModalShell from '../../../components/FormModalShell'
+import { useModalImageForm } from '../../../hooks/useModalImageForm.ts'
 
 interface EditPostModalProps {
   postId: string

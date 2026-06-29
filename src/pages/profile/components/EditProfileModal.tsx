@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Button } from '@heroui/react'
-import { useUpdateProfile } from '../../hooks/useUpdateProfile'
-import ProfileFormFields from '../../components/UserFormFields'
-import { useUser } from '../../hooks/useUser'
-import FormModalShell from '../../components/FormModalShell'
-import { useModalImageForm } from '../../hooks/useModalImageForm'
+import { useUpdateProfile } from '../../../hooks/useUpdateProfile.ts'
+import ProfileFormFields from '../../../components/UserFormFields'
+import { useUser } from '../../../hooks/useUser.ts'
+import FormModalShell from '../../../components/FormModalShell'
+import { useModalImageForm } from '../../../hooks/useModalImageForm.ts'
 
 interface EditProfileModalProps {
   triggerLabel?: string

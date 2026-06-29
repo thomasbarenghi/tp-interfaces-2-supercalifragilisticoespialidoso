@@ -1,5 +1,5 @@
 import { Button } from '@heroui/react'
-import EditProfileModal from '../../../pages/profile/EditProfileModal.tsx'
+import EditProfileModal from '../../../pages/profile/components/EditProfileModal.tsx'
 
 interface ProfileActionButtonProps {
   isOwnProfile: boolean
