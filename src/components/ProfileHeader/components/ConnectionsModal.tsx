@@ -16,16 +16,13 @@ const ConnectionsModal = ({ title, count, users }: ConnectionsModalProps) => {
           <strong>{count}</strong> {title.toLowerCase()}
         </button>
       </Modal.Trigger>
-
       <Modal.Backdrop>
         <Modal.Container>
           <Modal.Dialog className="w-full max-w-md rounded-xl bg-background shadow-2xl">
             <Modal.CloseTrigger />
-
             <Modal.Header>
               <Modal.Heading>{title}</Modal.Heading>
             </Modal.Header>
-
             <Modal.Body>
               <UserList users={users} />
             </Modal.Body>
