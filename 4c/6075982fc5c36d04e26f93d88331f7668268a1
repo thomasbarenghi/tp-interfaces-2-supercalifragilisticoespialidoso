@@ -1,0 +1,24 @@
+src/hooks/useSyncUserInCache.ts
+  h_a5ee0ed7d5d05d 1-59
+src/hooks/useUpdateProfile.ts
+  h_a5ee0ed7d5d05d 1-39
+src/hooks/useAuth.ts
+  h_a5ee0ed7d5d05d 3,28-29,66,72
+src/hooks/useUser.ts
+  h_a5ee0ed7d5d05d 1,5,8-20,22-38,40-63,65-68
+src/components/UserFormFields/index.tsx
+  h_a5ee0ed7d5d05d 1-63
+src/pages/edit-user/index.tsx
+  h_a5ee0ed7d5d05d 1-45,47-53,55-63,67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "4c6075982fc5c36d04e26f93d88331f7668268a1",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
