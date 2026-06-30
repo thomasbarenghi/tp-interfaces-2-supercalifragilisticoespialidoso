@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
-    password: 'password123',
+    password: '',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -47,6 +47,38 @@ export const useAuth = () => {
     }
   }
 
+  const register = async (nickname: string, name: string, email: string, password: string) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch(API.REGISTER, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nickName: nickname, name, email, password }),
+      })
+
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        throw new Error(data.message ?? 'Error al registrarse')
+      }
+
+      const userData = normalizeUser(data.user)
+      setUser(userData)
+
+      return userData
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Error desconocido'
+      setError(message)
+      throw err
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const logout = () => {
     clearUser()
     setError(null)
@@ -56,6 +88,7 @@ export const useAuth = () => {
     user,
     setUser,
     login,
+    register,
     logout,
     isLoading,
     isInitialized,

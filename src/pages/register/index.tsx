@@ -3,10 +3,9 @@ import { useState } from 'react'
 import { Alert, Button, Input, Label, TextField } from '@heroui/react'
 import { useAuth } from '../../hooks/useAuth'
 import { useNavigate } from 'react-router'
-import { ROUTES } from '../../config/routes'
 import Logo from '../../components/Logo/index.tsx'
 
-// Revisar como hacer para levantar el register. Hacer un useCreateRegister o volver a armar el useAuth para que tenga register y login.
+// Hook de autenticación con soporte para login, logout y register.
 
 const Register = () => {
   usePageTitle('Register')
@@ -16,7 +15,7 @@ const Register = () => {
     nickname: '',
     name: '',
     email: '',
-    password: 'password123',
+    password: '',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -105,7 +104,6 @@ const Register = () => {
                     type="submit"
                     className="w-full bg-[#E51E14] text-white font-semibold text-lg py-5 rounded-full min-h-[56px]"
                     isDisabled={isLoading}
-                    onPress={() => navigate(ROUTES.HOME)}
                   >
                     {isLoading ? 'Creando cuenta...' : 'Crear cuenta'}
                   </Button>
