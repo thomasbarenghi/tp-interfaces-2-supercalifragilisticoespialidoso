@@ -15,28 +15,23 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const login = async (email: string, password: string) => {
+  const handleRequest = async (
+    request: () => Promise<Response>,
+    errorMessage: string,
+  ): Promise<AuthUser> => {
     setIsLoading(true)
     setError(null)
 
     try {
-      const response = await fetch(API.LOGIN, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      })
-
+      const response = await request()
       const data = await response.json().catch(() => ({}))
 
       if (!response.ok) {
-        throw new Error(data.message ?? 'Error al iniciar sesión')
+        throw new Error(data.message ?? errorMessage)
       }
 
       const userData = normalizeUser(data.user)
       setUser(userData)
-
       return userData
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Error desconocido'
@@ -47,37 +42,27 @@ export const useAuth = () => {
     }
   }
 
-  const register = async (nickname: string, name: string, email: string, password: string) => {
-    setIsLoading(true)
-    setError(null)
+  const login = (email: string, password: string) =>
+    handleRequest(
+      () =>
+        fetch(API.LOGIN, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        }),
+      'Error al iniciar sesión',
+    )
 
-    try {
-      const response = await fetch(API.REGISTER, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ nickName: nickname, name, email, password }),
-      })
-
-      const data = await response.json().catch(() => ({}))
-
-      if (!response.ok) {
-        throw new Error(data.message ?? 'Error al registrarse')
-      }
-
-      const userData = normalizeUser(data.user)
-      setUser(userData)
-
-      return userData
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Error desconocido'
-      setError(message)
-      throw err
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const register = (nickname: string, name: string, email: string, password: string) =>
+    handleRequest(
+      () =>
+        fetch(API.REGISTER, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nickName: nickname, name, email, password }),
+        }),
+      'Error al registrarse',
+    )
 
   const logout = () => {
     clearUser()
