@@ -4,19 +4,22 @@ export const fetcher = <T>(url: string): Promise<T> =>
     return res.json() as Promise<T>
   })
 
-export const paginatedFetcher = async (url: string) => {
+export type PaginatedResponse<T> = {
+  data: T
+  pagination: {
+    totalItems: number
+    totalPages: number
+    currentPage: number
+    limit: number
+  }
+}
+
+export const paginatedFetcher = async <T>(url: string): Promise<PaginatedResponse<T>> => {
   const response = await fetch(url)
 
   if (!response.ok) {
     throw new Error('Error fetching data')
   }
 
-  const data = await response.json()
-
-  const totalItems = Number(response.headers.get('X-Total-Count')) || data.length
-
-  return {
-    data,
-    totalItems,
-  }
+  return response.json() as Promise<PaginatedResponse<T>>
 }
