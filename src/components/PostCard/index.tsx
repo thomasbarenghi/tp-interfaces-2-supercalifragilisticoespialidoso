@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router'
 import clsx from 'clsx'
 import { ROUTES } from '../../config/routes'
 import type { Post } from '../../types/post.ts'
+import { formatRelativeDate } from '../../utils/format.ts'
 
 interface PostCardProps {
   post: Post
@@ -25,15 +26,17 @@ const PostCard = ({ post }: PostCardProps) => {
           />
           <div className="flex items-center gap-1 text-xs font-semibold">
             <span
-              className="hover:underline"
+              className="hover:no-underline"
               onClick={(e) => {
                 e.stopPropagation()
-                navigate(ROUTES.PROFILE(author._id))
+                navigate(ROUTES.PROFILE(author.nickName))
               }}
             >
               {author.name}
             </span>
-            <span className="text-gray-400 font-normal">| hace 2 días</span>
+            <span className="text-gray-400 font-normal">
+              | {formatRelativeDate(post.createdAt)}
+            </span>
           </div>
         </div>
       )}

@@ -2,9 +2,11 @@ import { Avatar, Dropdown } from '@heroui/react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../hooks/useAuth'
 import { ROUTES } from '../../config/routes'
+import { useUser } from '../../hooks/useUser.ts'
 
 const UserMenu = () => {
-  const { user, logout } = useAuth()
+  const { logout } = useAuth()
+  const { user } = useUser()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -27,7 +29,7 @@ const UserMenu = () => {
           <Dropdown.Item
             id="profile"
             textValue="Ver mi perfil"
-            onAction={() => navigate(ROUTES.PROFILE(user?._id ?? ''))}
+            onAction={() => navigate(ROUTES.PROFILE(user?.nickName ?? ''))}
           >
             Ver mi perfil
           </Dropdown.Item>

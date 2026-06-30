@@ -1,22 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { API } from '../config/api'
-
-interface AuthUser {
-  _id: string
-  id: string
-  nickName: string
-  email: string
-  name: string
-  profileImage: string
-  bio: string
-  followers: string[]
-  following: string[]
-  posts: string[]
-  createdAt: string
-  updatedAt: string
-}
-
-const AUTH_USER_KEY = 'auth_user'
+import { useAuthContext, type AuthUser } from '../context/AuthContext'
 
 const normalizeUser = (user: Partial<AuthUser> & { _id?: string; id?: string }) =>
   ({
@@ -25,29 +9,11 @@ const normalizeUser = (user: Partial<AuthUser> & { _id?: string; id?: string }) 
     _id: user._id ?? user.id ?? '',
   }) as AuthUser
 
-const loadUser = (): AuthUser | null => {
-  const savedUser = localStorage.getItem(AUTH_USER_KEY)
-  if (!savedUser) return null
-
-  try {
-    return JSON.parse(savedUser) as AuthUser
-  } catch {
-    localStorage.removeItem(AUTH_USER_KEY)
-    return null
-  }
-}
-
 export const useAuth = () => {
-  const [user, setUser] = useState<AuthUser | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isInitialized, setIsInitialized] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const { user, setUser, clearUser, isInitialized } = useAuthContext()
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setUser(loadUser())
-    setIsInitialized(true)
-  }, [])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const login = async (email: string, password: string) => {
     setIsLoading(true)
@@ -69,7 +35,6 @@ export const useAuth = () => {
       }
 
       const userData = normalizeUser(data.user)
-      localStorage.setItem(AUTH_USER_KEY, JSON.stringify(userData))
       setUser(userData)
 
       return userData
@@ -83,13 +48,13 @@ export const useAuth = () => {
   }
 
   const logout = () => {
-    localStorage.removeItem(AUTH_USER_KEY)
-    setUser(null)
+    clearUser()
     setError(null)
   }
 
   return {
     user,
+    setUser,
     login,
     logout,
     isLoading,

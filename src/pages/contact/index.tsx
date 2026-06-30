@@ -18,7 +18,7 @@ const Contact = () => {
           <p className="text-sm text-(--accent) font-bold">CONTACTO</p>
           <h1 className="text-4xl font-bold">¿Hablamos?</h1>
         </div>
-        <div className="w-3/5">
+        <div className="lg:w-3/5 w-full">
           <Form onSubmit={handleSubmit} validationBehavior="native">
             <ContactForm />
           </Form>

@@ -5,6 +5,7 @@ export interface FollowUser {
   id: string
   nickName: string
   name: string
+  profileImage: string
 }
 
 export interface User {
