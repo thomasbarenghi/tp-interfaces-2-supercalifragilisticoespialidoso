@@ -1,8 +1,7 @@
-// components/FeedResults.tsx
 import { Alert } from '@heroui/react'
 import PostGrid from '../../components/PostGrid'
 import Paginator from '../../components/Paginator'
-import { POSTS_PER_PAGE } from '../../hooks/usePosts.ts'
+import { POSTS_PER_PAGE } from '../../hooks/usePosts'
 import type { Post } from '../../types/post'
 
 type FeedResultsProps = {

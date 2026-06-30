@@ -1,8 +1,8 @@
-import { usePageTitle } from '../../hooks/usePageTitle.ts'
+import { usePageTitle } from '../../hooks/usePageTitle'
 import Main from '../../components/Main'
 import FeedResults from '../../components/FeedResults'
 import { usePosts } from '../../hooks/usePosts'
-import { useAuth } from '../../hooks/useAuth.ts'
+import { useAuth } from '../../hooks/useAuth'
 import Logo from '../../components/Logo'
 
 const Feed = () => {
