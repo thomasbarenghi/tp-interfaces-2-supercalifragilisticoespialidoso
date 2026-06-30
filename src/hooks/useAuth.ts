@@ -1,21 +1,6 @@
 import { useState } from 'react'
 import { API } from '../config/api'
-import { useSyncUserInCache } from './useSyncUserInCache.ts'
-
-interface AuthUser {
-  _id: string
-  id: string
-  nickName: string
-  email: string
-  name: string
-  profileImage: string
-  bio: string
-  followers: string[]
-  following: string[]
-  posts: string[]
-  createdAt: string
-  updatedAt: string
-}
+import { useAuthContext, type AuthUser } from '../context/AuthContext'
 
 const normalizeUser = (user: Partial<AuthUser> & { _id?: string; id?: string }) =>
   ({
@@ -25,7 +10,7 @@ const normalizeUser = (user: Partial<AuthUser> & { _id?: string; id?: string }) 
   }) as AuthUser
 
 export const useAuth = () => {
-  const { user, setUser, clearUser, isInitialized } = useSyncUserInCache()
+  const { user, setUser, clearUser, isInitialized } = useAuthContext()
 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
