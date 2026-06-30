@@ -1,15 +1,14 @@
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { useState } from 'react'
-import { Alert, Button, Input, Label, TextField } from '@heroui/react'
+import { Button, Input, Label, TextField } from '@heroui/react'
 import { useAuth } from '../../hooks/useAuth'
 import { useNavigate } from 'react-router'
+import { toast } from 'sonner'
 import Logo from '../../components/Logo/index.tsx'
-
-// Hook de autenticación con soporte para login, logout y register.
 
 const Register = () => {
   usePageTitle('Register')
-  const { register, isLoading, error } = useAuth()
+  const { register, isLoading } = useAuth()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     nickname: '',
@@ -23,8 +22,9 @@ const Register = () => {
     try {
       await register(formData.nickname, formData.name, formData.email, formData.password)
       navigate('/')
-    } catch {
-      // El error ya se maneja en el hook y se muestra en la UI
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Error al registrarse'
+      toast.error(message)
     }
   }
 
@@ -44,14 +44,14 @@ const Register = () => {
           <div className="w-full px-15 py-20">
             <div className="max-w-2xl mx-auto flex flex-col items-center gap-[30px] py-8">
               <div className="w-full">
-                <h1 className="text-3xl font-bold">Registrate en TRADEMARK</h1>
+                <h1 className="text-3xl font-bold flex items-center gap-2">
+                  Registrate en <Logo />
+                </h1>
                 <p className="pt-2">Internet ya era un caos. Nosotros lo organizamos</p>
               </div>
 
               <div className="w-full">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                  {error && <Alert status="danger">{error}</Alert>}
-
                   <TextField>
                     <Label>Nombre</Label>
                     <Input
@@ -100,11 +100,7 @@ const Register = () => {
                     />
                   </TextField>
 
-                  <Button
-                    type="submit"
-                    className="w-full bg-[#E51E14] text-white font-semibold text-lg py-5 rounded-full min-h-[56px]"
-                    isDisabled={isLoading}
-                  >
+                  <Button type="submit" variant="primary" fullWidth isDisabled={isLoading}>
                     {isLoading ? 'Creando cuenta...' : 'Crear cuenta'}
                   </Button>
                 </form>

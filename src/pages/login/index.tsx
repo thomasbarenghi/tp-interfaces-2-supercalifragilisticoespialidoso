@@ -1,17 +1,15 @@
 import { useState } from 'react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
-import { Xmark } from '@gravity-ui/icons'
 import { useAuth } from '../../hooks/useAuth'
-import { Alert, Button, Input, Label, TextField, toast } from '@heroui/react'
+import { Button, Input, Label, TextField } from '@heroui/react'
 import { useNavigate } from 'react-router'
 import { ROUTES } from '../../config/routes'
+import { toast } from 'sonner'
 import Logo from '../../components/Logo/index.tsx'
-
-const noop = () => {}
 
 const Login = () => {
   usePageTitle('Login')
-  const { login, isLoading, error } = useAuth()
+  const { login, isLoading } = useAuth()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
@@ -23,8 +21,9 @@ const Login = () => {
     try {
       await login(formData.email, formData.password)
       navigate('/')
-    } catch {
-      // El error ya se maneja en el hook y se muestra en la UI
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Error al iniciar sesión'
+      toast.error(message)
     }
   }
 
@@ -50,8 +49,6 @@ const Login = () => {
 
               <div className="w-full">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                  {error && <Alert status="danger">{error}</Alert>}
-
                   <TextField>
                     <Label>Email</Label>
                     <Input
@@ -74,30 +71,15 @@ const Login = () => {
                     />
                   </TextField>
 
-                  <Button
-                    type="submit"
-                    className="w-full bg-[#E51E14] text-white font-semibold py-3 rounded-full"
-                    isDisabled={isLoading}
-                    onPress={() =>
-                      toast.danger('Error al iniciar sesión', {
-                        actionProps: {
-                          children: 'Cerrar',
-                          onPress: noop,
-                          variant: 'danger-soft',
-                        },
-                        description:
-                          'Hubo un error al iniciar sesión. Por favor, verifica tus credenciales e intenta nuevamente.',
-                        indicator: <Xmark />,
-                      })
-                    }
-                  >
-                    {isLoading ? 'Guardando...' : 'Ingresar'}
+                  <Button type="submit" variant="primary" fullWidth isDisabled={isLoading}>
+                    Ingresar
                   </Button>
 
                   <Button
                     variant="outline"
                     fullWidth
-                    className="rounded-full border-[#E51E14] text-[#E51E14]"
+                    className="rounded-full border-accent text-accent"
+
                     onClick={() => navigate(ROUTES.REGISTER)}
                   >
                     Crear cuenta
