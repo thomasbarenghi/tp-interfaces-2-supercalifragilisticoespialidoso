@@ -1,0 +1,29 @@
+src/main.tsx
+  s_c6fd0154dc7985::t_1dc362d73218b2 5,10-12
+src/hooks/useAuth.ts
+  s_c6fd0154dc7985::t_be85e149dcd168 3,13
+src/context/AuthContext.tsx
+  h_a5ee0ed7d5d05d 1,3-17,31,45,67
+  s_c6fd0154dc7985::t_90f5efdba5b086 2,18-30,32-44,46-66,68-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "061c89d657ffd59729381098cca36f92073e1fac",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_c6fd0154dc7985": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "38524a77-3ed3-4b8a-a205-6aa3c19392cc",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
