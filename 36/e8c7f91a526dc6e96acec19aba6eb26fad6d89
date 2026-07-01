@@ -1,0 +1,26 @@
+src/hooks/usePosts.ts
+  s_69e4e99f189947::t_5f2af01e684621 11,13-14,22-26
+src/lib/fetcher.ts
+  s_69e4e99f189947::t_4ad2f386e1fc0c 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "36e8c7f91a526dc6e96acec19aba6eb26fad6d89",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_69e4e99f189947": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec37fd6a-3edd-4040-b04c-f9207bb780de",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
