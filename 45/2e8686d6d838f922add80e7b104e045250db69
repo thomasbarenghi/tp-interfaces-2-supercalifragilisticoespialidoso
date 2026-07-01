@@ -1,0 +1,50 @@
+src/hooks/useAuth.ts
+  h_a5ee0ed7d5d05d 70
+  s_69e4e99f189947::t_cf1de92c09c364 45,51
+src/pages/feed/index.tsx
+  h_a5ee0ed7d5d05d 19,26
+.gitignore
+  h_a5ee0ed7d5d05d 14
+src/components/ProfileHeader/components/ProfileInfo.tsx
+  h_a5ee0ed7d5d05d 3,7,9-13
+src/pages/login/index.tsx
+  s_69e4e99f189947::t_9cbdd45c94be62 8,28-31,34-36,38,43-45,47-56,58-60,62-70,72
+  s_69e4e99f189947::t_aa2a2340da0c96 14,19
+  s_69e4e99f189947::t_19f1ff52750b15 37,39-42
+src/pages/register/index.tsx
+  h_a5ee0ed7d5d05d 31
+  s_69e4e99f189947::t_361af98acbadd9 2,4,7,14,28-29,32-33,36-48,50-60,62-72,74-84,86-89,91
+  s_69e4e99f189947::t_58d6c6f4b8d0c9 30
+src/components/AuthLayout/index.tsx
+  h_a5ee0ed7d5d05d 15
+  s_69e4e99f189947::t_2bc203a22d6834 14
+  s_69e4e99f189947::t_ea3eefabc8cfb9 1-13,16-33
+src/components/Logo/index.tsx
+  s_69e4e99f189947::t_ffb3dde10cc6e5 5
+  s_69e4e99f189947::t_cdf672fee29234 1-4,11
+src/components/ProfileHeader/index.tsx
+  h_a5ee0ed7d5d05d 31-34
+src/components/Header/index.tsx
+  h_a5ee0ed7d5d05d 48,52-53,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "452e8686d6d838f922add80e7b104e045250db69",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_69e4e99f189947": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec37fd6a-3edd-4040-b04c-f9207bb780de",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
