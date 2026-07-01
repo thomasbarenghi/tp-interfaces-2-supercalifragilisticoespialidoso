@@ -11,6 +11,7 @@ export type PaginatedResponse<T> = {
     totalPages: number
     currentPage: number
     limit: number
+    seed?: number
   }
 }
 
