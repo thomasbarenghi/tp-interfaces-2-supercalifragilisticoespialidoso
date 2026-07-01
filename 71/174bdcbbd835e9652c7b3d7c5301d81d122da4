@@ -1,0 +1,49 @@
+src/hooks/useAuth.ts
+  s_69e4e99f189947::t_60daa5f88f2758 30
+src/components/Header/CreatePostModal.tsx
+  s_69e4e99f189947::t_7543f1840dfde5 10
+  s_69e4e99f189947::t_f07106986b4111 52
+  s_69e4e99f189947::t_1917ff770e1e41 16
+src/pages/register/index.tsx
+  s_69e4e99f189947::t_16ab033aa50cca 90-93
+  s_69e4e99f189947::t_84c951fde54f6f 6
+  s_69e4e99f189947::t_7700f81a73a796 94-96
+src/components/Header/index.tsx
+  s_69e4e99f189947::t_40dc4d2e69e28b 79-85
+src/components/PostCard/index.tsx
+  s_69e4e99f189947::t_41a499d11dc2f8 12-13,17-21
+  s_69e4e99f189947::t_3544241a9bea74 3
+  s_69e4e99f189947::t_116769823031a7 63,68-74
+  s_69e4e99f189947::t_0e499dadd44eb4 64-66
+  s_69e4e99f189947::t_72e0121c0fc793 75-77
+  s_69e4e99f189947::t_4de033354d968b 78-79
+src/config/routes.ts
+  s_69e4e99f189947::t_0b1ffb5319b173 12
+src/components/ProfileHeader/components/ProfileInfo.tsx
+  h_a5ee0ed7d5d05d 14
+src/components/ProfileHeader/index.tsx
+  s_69e4e99f189947::t_aba5fa729e51e7 27
+src/components/PostFormFields/index.tsx
+  s_69e4e99f189947::t_8508f566b4f064 100-117,119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "71174bdcbbd835e9652c7b3d7c5301d81d122da4",
+  "prompts": {},
+  "humans": {
+    "h_a5ee0ed7d5d05d": {
+      "author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_69e4e99f189947": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec37fd6a-3edd-4040-b04c-f9207bb780de",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "thomasbarenghi <thomasbarenghi@gmail.com>"
+    }
+  }
+}
